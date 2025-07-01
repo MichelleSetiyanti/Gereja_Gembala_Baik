@@ -1,465 +1,464 @@
 /* Reset Default */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Body Styling */
 body {
-	color: white;
-	background-color: #41332c;
-	font-family: "Rubik", sans-serif;
+  color: white;
+  background-color: #41332c;
+  font-family: "Rubik", sans-serif;
 }
 
 /* Header */
 .header {
-	position: relative;
-	width: 100%;
-	height: 15vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* Navbar */
 .navbar {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 20px;
-	background: transparent;
-	transition: background 0.3s ease-in-out;
-	z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .navbar.scrolled {
-	background: rgba(81, 67, 57, 0.7);
+  background: rgba(81, 67, 57, 0.7);
 }
 
 .logo-container {
-	padding-left: 30px;
+  padding-left: 30px;
 }
 
 .logo-container .logo {
-	height: 40px;
+  height: 40px;
 }
 
 .nav-links {
-	display: flex;
-	gap: 30px;
-	padding-right: 30px;
-	font-size: 10px;
-	font-weight: bold;
+  display: flex;
+  gap: 30px;
+  padding-right: 30px;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .nav-links a {
-	color: white;
-	text-decoration: none;
-	transition: color 0.3s;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
-	color: #ccc;
+  color: #ccc;
 }
 
 /* Mobile Navbar */
 .menu-toggle {
-	display: none;
-	font-size: 24px;
-	cursor: pointer;
-	color: white;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
 @media (max-width: 768px) {
-	.menu-toggle {
-		display: block;
-	}
+  .menu-toggle {
+    display: block;
+  }
 
-	.nav-links {
-		display: none;
-		flex-direction: column;
-		position: absolute;
-		top: 60px;
-		left: 0;
-		width: 100%;
-		background: rgba(0, 0, 0, 0.9);
-		text-align: center;
-		padding: 10px 0;
-	}
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 10px 0;
+  }
 
-	.nav-links.active {
-		display: flex;
-	}
+  .nav-links.active {
+    display: flex;
+  }
 }
 
 /* Main Content */
 
 .content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 20px;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
 /* Container untuk Card */
 .container {
-	display: flex;
-	/* flex-wrap: wrap; */
-	gap: 1rem;
-	justify-content: center;
-	align-items: center;
-	max-width: 700px;
-	margin: 0 auto;
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 /* Styling Card */
 .card {
-	width: 16rem;
-	background-image: url("../assets/backgroundsalib.jpg");
-	height: 20rem;
-	padding: 5rem;
-	border-radius: 0.5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	color: white;
-	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-	overflow: hidden;
-	justify-content: center;
+  width: 16rem;
+  background-image: url("../assets/backgroundsalib.jpg");
+  height: 20rem;
+  padding: 5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
 }
 
 div:has(input[required]) > label:after {
-	content: " *";
-	color: red;
+  content: " *";
+  color: red;
 }
 /* Tambahkan overlay untuk memperjelas teks */
 .card::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.4);
-	z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 }
 
 .card h2,
 .card button {
-	position: relative;
-	z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
 /* Button styling */
 .card button {
-	background-color: #a68b5b;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #a68b5b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .delete-btn- {
-	background-color: #992b2b;
-	color: #cbc7c3; }
-
-.edit-btn- {
-	background-color: #e2e887;
+  background-color: #992b2b;
+  color: #cbc7c3;
 }
 
-
+.edit-btn- {
+  background-color: #e2e887;
+}
 
 button.BtnBayi {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnKateAnak {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnKateDewasa {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnBiduk {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnAnak {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnDewasa {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnSurat {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnPembayaranSuratBaptis {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnPastorParoki {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 #table-anak {
-	color: black;
+  color: black;
 }
 
 #table-dewasa {
-	color: black;
+  color: black;
 }
 
 #table-surat {
-	color: black;
+  color: black;
 }
 
 table head {
-	table-layout: fixed;
-	width: 100%;
-	border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th,
 td {
-	word-wrap: break-word;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	padding: 8px;
-	border: 1px solid black;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px;
+  border: 1px solid black;
 }
 
 /* Judul */
 h1 {
-	font-size: 2rem;
-	margin-bottom: 2rem;
-	font-weight: 100;
-	font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 100;
+  font-weight: 400;
 }
 
 h2 {
-	color: #cbc7c3;
-	font-size: 20px;
-	margin-bottom: 30px;
+  color: #cbc7c3;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
 #editDatabaseBayi {
-	display: flex;
+  display: flex;
 }
 
 #editDataBayi {
-	display: flex;
+  display: flex;
 }
 
 #editDatabaseDewasa {
-	display: flex;
+  display: flex;
 }
 
 #editDataDewasa {
-	display: flex;
+  display: flex;
 }
 
 #editDatabaseSurat {
-	display: flex;
+  display: flex;
 }
 
 /* Styling modal */
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 1000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	justify-content: center;
-	align-items: center;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 }
 
 /* Box modal */
 .modal-content {
-	background: white;
-	padding: 15px;
-	border-radius: 10px;
-	width: 90%;
-	max-width: 80%;
-	max-height: 80vh;
-	overflow-y: auto;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-	position: relative;
-	animation: fadeIn 0.3s ease-in-out;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 /* Tombol close */
 .close-btn {
-	position: absolute;
-	top: 10px;
-	right: 15px;
-	font-size: 24px;
-	cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 /* Flexbox form container */
 .form-container {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Row layout */
 .input-row {
-	display: flex;
-	justify-content: space-between;
-	gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 /* Styling untuk label */
 label {
-	color: #444444;
-	display: block;
-	font-weight: 500;
-	margin-top: 10px;
-	font-size: 14px;
+  color: #444444;
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 /* Input box */
 .input-box {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
 /* Styling input fields */
 .input-box input {
-	width: 100%;
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 /* Tombol submit */
 .btn {
-	width: 100%;
-	padding: 8px;
-	font-size: 14px;
-	background: #796754;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  background: #796754;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn:hover {
-	background: #aea398;
+  background: #aea398;
 }
 
 /* Animasi muncul modal */
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .message-box {
-	display: none;
-	opacity: 0;
-	transition: opacity 0.5s ease-in-out;
-	margin: 0 0.5rem;
-	padding: 10px;
-	background-color: #f0f0f0;
-	border-radius: 5px;
-	font-size: 14px;
-	font-weight: 600;
-	text-align: center;
-	color: #333;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  margin: 0 0.5rem;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
 }
 
 .message-box.success {
-	background-color: #d4edda;
-	color: #166829;
+  background-color: #d4edda;
+  color: #166829;
 }
 
 .message-box.error {
-	background-color: #f8d7da;
-	color: #d03b3b;
+  background-color: #f8d7da;
+  color: #d03b3b;
 }
