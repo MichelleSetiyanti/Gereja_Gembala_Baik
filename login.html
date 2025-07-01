@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			id="favicon"
+			rel="shortcut icon"
+			href="./assets/logo.png"
+			type="image/x-png" />
+		<title>Login | Gereja Katolik - Gembala Baik</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+			rel="stylesheet" />
+		<style>
+			body {
+				font-family: "Rubik", sans-serif;
+			}
+		</style>
+	</head>
+
+	<div class="flex justify-center">
+		<div
+			id="messageBox"
+			class="hidden text-white p-2 rounded mt-3 w-full max-w-xs text-center"></div>
+	</div>
+
+	<body class="bg-gray-200 flex flex-col min-h-screen">
+		<div class="flex-grow flex items-center justify-center">
+			<div
+				class="bg-white rounded-lg shadow-lg flex max-w-4xl w-full relative p-6">
+				<!-- Form Section -->
+				<div class="w-full md:w-1/2 flex flex-col items-center relative">
+					<img
+						alt="Logo"
+						class="mb-4 w-20 h-20"
+						src="./assets/logo_black.png" />
+					<h1 class="text-3xl font-semibold text-center">Login</h1>
+					<p class="mb-4">Welcome back!</p>
+
+					<!-- Form -->
+					<form
+						action="./php/user/process_login.php"
+						method="post"
+						class="w-full max-w-xs"
+						id="loginForm">
+						<table class="w-full">
+							<tr>
+								<td class="text-sm font-medium text-gray-700 py-2">Username</td>
+							</tr>
+							<tr>
+								<td>
+									<input
+										class="mt-1 block w-full max-w-xs px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+										type="text"
+										name="username"
+										value=""
+										placeholder="Enter username"
+										required />
+								</td>
+							</tr>
+
+							<tr>
+								<td class="text-sm font-medium text-gray-700 py-2">Password</td>
+							</tr>
+							<tr>
+								<td>
+									<input
+										class="mt-1 block w-full max-w-xs px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+										type="password"
+										name="password"
+										value=""
+										placeholder="Create a password"
+										required />
+								</td>
+							</tr>
+
+							<tr>
+								<td class="text-center py-3">
+
+									<!-- BUTTON LOGIN -->
+									<input
+										class="w-full max-w-xs px-4 py-2 bg-black text-white rounded-md text-sm font-medium cursor-pointer mt-7"
+										type="submit"
+										name="login"
+										value="Login" />
+								</td>
+							</tr>
+							<tr>
+								<td class="text-center py-3">
+									<a
+										href="register.html"
+										class="text-blue-500"
+										>Belum punya akun ?</a
+									>
+								</td>
+							</tr>
+						</table>
+					</form>
+
+					<footer class="absolute left-0 bottom-0 px-4 py-2 text-xs text-gray-500">
+						<p>© Gereja Katolik - Gembala Baik 2025 | (0561) 734827</p>
+					</footer>
+				</div>
+
+				<!-- Image Section -->
+				<div class="hidden md:block md:w-1/2 relative">
+					<img
+						class="w-full h-full object-cover rounded-r-lg"
+						src="./assets/login_bg.jpg" />
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const form = document.querySelector("form");
+				const messageBox = document.getElementById("messageBox");
+
+				form.addEventListener("submit", function (event) {
+					event.preventDefault(); // Cegah form reload
+
+					const formData = new FormData(form);
+
+					fetch("./php/user/process_login.php", {
+						method: "POST",
+						body: formData,
+					})
+						.then((response) => response.json())
+						.then((data) => {
+							messageBox.textContent = data.message;
+							messageBox.classList.remove("hidden");
+
+							if (data.status === "success") {
+								messageBox.classList.add("bg-green-500");
+								setTimeout(() => {
+									window.location.href = "admin_view.html";
+								}, 2000);
+								form.reset();
+								localStorage.setItem("user", data.data);
+							} else {
+								messageBox.classList.add("bg-red-500");
+								form.reset();
+
+								setTimeout(() => {
+									messageBox.classList.add("hidden");
+								}, 2000);
+							}
+						})
+						.catch((error) => console.error("Error:", error));
+				});
+			});
+		</script>
+	</body>
+</html>

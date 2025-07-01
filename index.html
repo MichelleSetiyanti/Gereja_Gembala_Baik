@@ -1,0 +1,1375 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			id="favicon"
+			rel="shortcut icon"
+			href="./assets/logo.png"
+			type="image/x-png" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- jQuery -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+			rel="stylesheet" />
+		<title>Gereja Katolik - Gembala Baik</title>
+		<link
+			rel="stylesheet"
+			href="./css/admin_view.css" />
+		<link
+			rel="stylesheet"
+			href="./css/index.css" />
+
+		<script>
+			function toggleMenu() {
+				document.querySelector(".nav-links").classList.toggle("active");
+			}
+		</script>
+	</head>
+	<body>
+		<header class="header">
+			<img
+				class="background-image"
+				src="./assets/bgrosario.jpg" />
+			<div class="overlay"></div>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+				rel="stylesheet" />
+			<link
+				href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+				rel="stylesheet" />
+
+			<!-- NAVIGATION BAR -->
+			<nav class="navbar">
+				<div class="logo-container">
+					<img
+						class="logo"
+						src="./assets/logo.png"
+						alt="Church logo" />
+				</div>
+				<div
+					class="menu-toggle"
+					onclick="toggleMenu()">
+					&#9776;
+				</div>
+				<div class="nav-links">
+					<a href="#">UTAMA</a>
+					<a href="#about-us">TENTANG</a>
+					<a href="#jadwal-misa">JADWAL MISA</a>
+					<a href="#location">LOKASI</a>
+					<!-- <a href="#pendaftaran">PENDAFTARAN</a> -->
+					<a href="login.html">LOGIN</a>
+				</div>
+			</nav>
+
+			<!-- CONTENT -->
+			<div
+				id="home"
+				class="content">
+				<h2>Selamat Datang Di Gereja Kami</h2>
+				<h1>MARI BERDOA</h1>
+				<p style="text-align: center;">
+					Gereja Katolik yang berkomitmen untuk melayani umat 
+					melalui berbagai kegiatan keagamaan dan sosial.
+				</p>
+			</div>
+		</header>
+
+		<!-- SECTION -->
+		<section class="section">
+			<div class="border-left">
+				<p class="text">
+					Gereja kami menghubungkan keluarga Allah 
+					ke dalam persekutuan kami. Kami menyediakan 
+					komunitas yang hangat dan otentik, 
+					menyambut orang baru ke dalam tubuh 
+					Kristus melalui baptisan.
+				</p>
+			</div>
+		</section>
+
+		<!-- ABOUT US -->
+		<div
+			id="about-us"
+			class="about-section">
+			<div class="about-image">
+				<img src="./assets/about_us.jpg" />
+			</div>
+			<div class="about-content">
+				<h1>TENTANG KAMI</h1>
+				<p>
+					Di Gereja Gembala Baik, kami ingin kasih yang Kristus tunjukkan 
+					di kayu salib mengalir keluar dari kehidupan kami dan berdampak pada masyarakat.
+				</p>
+				<p style="text-align: justify;">
+					Gembala Baik Pontianak didirikan dengan tujuan untuk menjadi tempat 
+					peribadatan yang inklusif bagi umat Katolik di Pontianak. Sejak awal 
+					berdirinya, gereja ini berfokus pada pelayanan masyarakat dan pendidikan 
+					iman, yang semakin menguatkan komitmennya dalam melayani umat. Kami tumbuh 
+					pesat berkat dukungan penuh dari komunitas dan sering mengadakan berbagai 
+					acara rohani.
+				</p>
+				<p style="text-align: justify;">
+					Dengan beragam kegiatan keagamaan dan sosial, 
+					Gembala Baik telah mengukir namanya sebagai pusat kegiatan spiritual 
+					di Pontianak. Gereja ini terus berkomitmen untuk memberikan pelayanan 
+					terbaik dan merangkul setiap individu dalam perjalanan keimanan mereka.
+				</p>
+				<a
+					href="#location"
+					class="buttons">
+					<button class="read-more">LOKASI KAMI</button>
+				</a>
+			</div>
+		</div>
+
+		<!-- JADWAL MISA -->
+		<section
+			id="jadwal-misa"
+			class="schedule-section">
+			<div class="container">
+				<h2 class="section-title">JADWAL MISA</h2>
+				<div class="table-container">
+					<table class="schedule-table">
+						<thead>
+							<tr>
+								<th>Ibadah</th>
+								<th>Bahasa</th>
+								<th>Waktu & Hari</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Misa Harian</td>
+								<td>Bahasa Indonesia</td>
+								<td>
+									<div>Senin - Kamis</div>
+									<div class="time">05.15 WIB</div>
+									<div>Jumat Keempat</div>
+									<div class="time">17.30 WIB</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Misa Adorasi & Jumat Pertama</td>
+								<td>Bahasa Indonesia</td>
+								<td>
+									<div>Jumat Pertama</div>
+									<div class="time">17.30 WIB</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Misa & Adorasi Kerahiman Ilahi</td>
+								<td>Bahasa Indonesia</td>
+								<td>
+									<div>Jumat Kedua</div>
+									<div class="time">17.30 WIB</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Misa Senakel</td>
+								<td>Bahasa Indonesia</td>
+								<td>
+									<div>Jumat Ketiga</div>
+									<div class="time">17.30 WIB</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Misa Hari Minggu</td>
+								<td>Bahasa Mandarin</td>
+								<td>
+									<div>Minggu</div>
+									<div class="time">06.30 WIB</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Misa Hari Minggu</td>
+								<td>Bahasa Indonesia</td>
+								<td>
+									<div>Sabtu</div>
+									<div class="time">18.00 WIB</div>
+									<div>Minggu</div>
+									<div class="time">08.30 WIB & 17.30 WIB</div>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<!-- FORM SECTION -->
+		<!-- <section
+			id="pendaftaran"
+			class="form-section">
+			<div class="card">
+				<h2>Pembuatan Sakramen Bayi</h2> 
+				<button
+					class="open-modal-btn"
+					data-table_name="sakramen_bayi">
+					CREATE
+				</button>
+				<button class="BtnBayi">View</button>
+			</div>
+			<!-- <div class="card">
+          <h2>Pembuatan Sakramen Anak</h2>
+          <button class="open-modal-btn">CREATE</button>
+          <button class="BtnAnak">View</button>
+        </div>
+			<div class="card">
+				<h2>Pembuatan Sakramen Dewasa</h2>
+				<button
+					class="open-modal-btn"
+					data-table_name="sakramen_dewasa">
+					CREATE
+				</button>
+				<button class="BtnDewasa">View</button>
+			</div>
+			<div class="card">
+				<h2>Pembuatan Katekumen Anak</h2>
+				<button
+					class="open-modal-btn"
+					data-table_name="katekumen_anak">
+					CREATE
+				</button>
+				<button class="BtnKateAnak">View</button>
+			</div>
+			<div class="card">
+				<h2>Pembuatan Katekumen Dewasa</h2>
+				<button
+					class="open-modal-btn"
+					data-table_name="katekumen_dewasa">
+					CREATE
+				</button>
+				<button class="BtnKateDewasa">View</button>
+			</div>
+		</section> -->
+
+		<!-- END FORM SECTION -->
+
+		<!-- LOCATION SECTION -->
+		<div
+			id="location"
+			class="location-section">
+			<div class="location-content">
+				<p class="visit-us">KUNJUNGI KAMI</p>
+				<h1>Dimana Bisa Menemukan Kami</h1>
+				<p class="address">
+					Jl. Sultan Moh. No.222, Benua Melayu Laut, Kec. Pontianak Sel., Kota
+					Pontianak, Kalimantan Barat 78123
+				</p>
+				<p class="questions">Kontak: <span>(0561) 734827</span></p>
+
+				<div class="social-icons">
+					<a href="#"><i class="fab fa-youtube"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+					<a href="#"><i class="fab fa-facebook"></i></a>
+					<a href="#"><i class="fab fa-instagram"></i></a>
+				</div>
+			</div>
+			<div class="map-section">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.358164487218!2d110.39324157508097!3d-7.635507692392962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe0986bd743526532!2sGereja%20Katolik%20Gembala%20Baik!5e0!3m2!1sen!2sid!4v1708449232134!5m2!1sen!2sid"
+					width="100%"
+					height="250"
+					style="border: 0; border-radius: 10px"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+			</div>
+		</div>
+
+		<!-- FOOTER SECTION -->
+		<footer class="footer">
+			<div class="footer-content">
+				<div class="footer-logo">
+					<img
+						src="./assets/logo.png"
+						alt="Gereja Katolik Logo" />
+				</div>
+				<div class="footer-text">
+					<p>Gereja Katolik Gembala Baik</p>
+					<p>Tempat Iman, Harapan, dan Cinta</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2025 Gereja Katolik Gembala Baik. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<!-- Modal -->
+		<!-- Modal5 -->
+		<div
+			id="formModal5"
+			class="modal">
+			<!-- Notification Box -->
+			<div class="modal-content">
+				<span
+					class="close-btn"
+					style="color: red"
+					>&times;</span
+				>
+				<div
+					id="messageBox"
+					class="message-box"></div>
+				<h2 class="modal-title">PERMANDIAN BAYI PAROKI GEMBALA BAIK PONTIANAK</h2>
+
+				<form
+					action="sakramen_bayi.php"
+					method="POST"
+					class="form-container">
+					<!-- Row 1 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nomor LB</label>
+							<input
+								type="text"
+								name="nomor_lb"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nomor SA</label>
+							<input
+								type="text"
+								name="nomor_sa"
+								required />
+						</div>
+						<div class="input-box">
+							<label>NIK</label>
+							<input
+								type="text"
+								name="nik"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 2 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Diri Lengkap</label>
+							<input
+								type="text"
+								name="nama_diri"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Permandian</label>
+							<input
+								type="text"
+								name="nama_pemandian"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tempat Lahir</label>
+							<input
+								type="text"
+								name="tempat_lahir"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 3 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tanggal Lahir</label>
+							<input
+								type="date"
+								name="tanggal_lahir"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ayah</label>
+							<input
+								type="text"
+								name="nama_ayah"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ibu</label>
+							<input
+								type="text"
+								name="nama_ibu"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 4 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Gereja Pernikahan</label>
+							<input
+								type="text"
+								name="tempat_pernikahan"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Pernikahan</label>
+							<input
+								type="date"
+								name="tanggal_pernikahan"
+								required />
+						</div>
+						<div class="input-box">
+							<label>LM Paroki</label>
+							<input
+								type="text"
+								name="lm_paroki"
+								required />
+						</div>
+					</div>
+
+					<!-- Remaining Fields -->
+					<div class="input-box">
+						<label>Pastor yang Memberkati</label>
+						<input
+							type="text"
+							name="pastor_memberkati"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Tempat Permandian</label>
+						<input
+							type="text"
+							name="tempat_permandian"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Tanggal Permandian</label>
+						<input
+							type="date"
+							name="tanggal_permandian"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Bapa/Ibu Permandian (Saksi)</label>
+						<input
+							type="text"
+							name="saksi_permandian"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Pastor Pembaptis</label>
+						<input
+							type="text"
+							name="pastor_pembaptis"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Alamat Lengkap</label>
+						<input
+							type="text"
+							name="alamat"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>No HP/Telp</label>
+						<input
+							type="text"
+							name="no_telp"
+							required />
+					</div>
+
+					<input
+						type="submit"
+						name="save"
+						value="SUBMIT"
+						class="btn" />
+				</form>
+			</div>
+		</div>
+
+		<div
+			id="formDatabaseBayi"
+			class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2 id="modal-title">Database Sakramen Baptis Bayi</h2>
+				<table
+					id="table-anak"
+					border="1">
+					<thead>
+						<tr id="table-head">
+							<th>No</th>
+							<th>NoAdmin</th>
+							<th>Nomor LB</th>
+							<th>Nomor SA</th>
+							<th>NIK</th>
+							<th>Nama Diri Lengkap</th>
+							<th>Nama Permandian</th>
+							<th>Tempat Lahir</th>
+							<th>Tanggal Lahir</th>
+							<th>Nama Ayah</th>
+							<th>Nama Ibu</th>
+							<th>Gereja Pernikahan</th>
+							<th>Tanggal Pernikahan</th>
+							<th>LM Paroki</th>
+							<th>Pastor yang Memberkati</th>
+							<th>Tempat Permandian</th>
+							<th>Tanggal Permandian</th>
+							<th>Bapa/Ibu Permandian (Saksi)</th>
+							<th>Pastor Pembaptis</th>
+							<th>Alamat Lengkap</th>
+							<th>No HP/Telp</th>
+						</tr>
+					</thead>
+					<tbody id="table-body-bayi"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Modal1 -->
+		<div
+			id="formModal1"
+			class="modal">
+			<!-- Notification Box -->
+			<div class="modal-content">
+				<span
+					class="close-btn"
+					style="color: red"
+					>&times;</span
+				>
+				<div
+					id="messageBox"
+					class="message-box"></div>
+				<h2 class="modal-title">PERMANDIAN DEWASA PAROKI GEMBALA BAIK PONTIANAK</h2>
+
+				<form
+					action="sakramen_dewasa.php"
+					method="POST"
+					class="form-container">
+					<!-- Row 1 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>NIK</label>
+							<input
+								type="text"
+								name="nik"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nomor LB</label>
+							<input
+								type="text"
+								name="nomor_lb"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nomor SA</label>
+							<input
+								type="text"
+								name="nomor_sa"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 2 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Diri Lengkap</label>
+							<input
+								type="text"
+								name="nama_diri"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Pemandian</label>
+							<input
+								type="text"
+								name="nama_pemandian"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ayah</label>
+							<input
+								type="text"
+								name="nama_ayah"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 3 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Ibu</label>
+							<input
+								type="text"
+								name="nama_ibu"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Suami/Istri </label>
+							<input
+								type="text"
+								name="nama_suami_istri"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tempat Pernikahan</label>
+							<input
+								type="text"
+								name="tempat_pernikahan"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 4 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tanggal Pernikahan</label>
+							<input
+								type="date"
+								name="tanggal_pernikahan"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tempat Permandian</label>
+							<input
+								type="text"
+								name="tempat_permandian"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Permandian</label>
+							<input
+								type="date"
+								name="tanggal_permandian"
+								required />
+						</div>
+					</div>
+
+					<!-- Remaining Fields -->
+					<div class="input-box">
+						<label>Bapa/Ibu Permandian(Saksi)</label>
+						<input
+							type="text"
+							name="saksi_permandian"
+							required />
+					</div>
+					<div class="input-box">
+						<label>LM Paroki</label>
+						<input
+							type="text"
+							name="lm_paroki"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Pastor Pembaptis</label>
+						<input
+							type="text"
+							name="pastor_pembaptis"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Alamat Lengkap</label>
+						<input
+							type="text"
+							name="alamat"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>No HP/Telp</label>
+						<input
+							type="text"
+							name="no_hp"
+							required />
+					</div>
+
+					<input
+						type="submit"
+						name="save"
+						value="SUBMIT"
+						class="btn" />
+				</form>
+			</div>
+		</div>
+
+		<div
+			id="formDatabaseDewasa"
+			class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2 id="modal-title">Database Sakramen Baptis Dewasa</h2>
+				<table
+					id="table-dewasa"
+					border="1">
+					<thead>
+						<tr id="table-head">
+							<th>No</th>
+							<th>NoAdmin</th>
+							<th>Nomor LB</th>
+							<th>Nomor SA</th>
+							<th>NIK</th>
+							<th>Nama Diri Lengkap</th>
+							<th>Nama Pemandian</th>
+							<th>Nama Ayah</th>
+							<th>Nama Ibu</th>
+							<th>Nama Suami/Istri</th>
+							<th>Tempat Pernikahan</th>
+							<th>Tanggal Pernikahan</th>
+							<th>Tempat Permandian</th>
+							<th>Tanggal Permandian</th>
+							<th>Bapa/Ibu Permandian(Saksi)</th>
+							<th>LM Paroki</th>
+							<th>Pastor Pembaptis</th>
+							<th>Alamat Lengkap</th>
+							<th>No HP/Telp</th>
+						</tr>
+					</thead>
+					<tbody id="table-body-dewasa"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Modal2 -->
+		<div
+			id="formModal2"
+			class="modal">
+			<!-- Notification Box -->
+			<div class="modal-content">
+				<span
+					class="close-btn"
+					style="color: red"
+					>&times;</span
+				>
+				<h2 class="modal-title">
+					PEMBUATAN SURAT BAPTIS PAROKI GEMBALA BAIK PONTIANAK
+				</h2>
+
+				<form
+					action="surat_baptis.php"
+					method="POST"
+					enctype="multipart/form-data"
+					class="form-container">
+					<!-- Row 1 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Buku</label>
+							<input
+								type="text"
+								name="no_buku"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Hal</label>
+							<input
+								type="text"
+								name="no_hal"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nomor</label>
+							<input
+								type="text"
+								name="no_baptis"
+								required />
+						</div>
+					</div>
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tipe Katekumen</label>
+							<select
+								name="katekumen_type"
+								id="baptisCreateKatekumenType"
+								onchange="selectKatekumenTypeChange(event)">
+								<option value="anak">Anak</option>
+								<option value="dewasa">Dewasa</option>
+							</select>
+						</div>
+						<div class="input-box">
+							<label>Katekumen</label>
+							<select
+								name="katekumen_id"
+								id="baptisCreateKatekumenId"></select>
+						</div>
+					</div>
+
+					<!-- Row 2 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>NIK</label>
+							<input
+								type="text"
+								name="nik"
+								id="createBaptisNiK"
+								required />
+							<button
+								class="btn"
+								onclick="verifikasiNik(event)">
+								Verifikasi NIK
+							</button>
+						</div>
+						<div class="input-box">
+							<label>Tanggal Lahir</label>
+							<input
+								type="date"
+								name="tanggal_lahir"
+								id="createBaptisTanggalLahir"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 3 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tempat Lahir</label>
+							<input
+								type="text"
+								name="tempat_lahir"
+								id="createBaptisTempatLahir"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Permandian</label>
+							<input
+								type="date"
+								name="tanggal_permandian"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tahun Permandian</label>
+							<input
+								type="text"
+								name="tahun_permandian"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 4 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tempat Permandian</label>
+							<input
+								type="text"
+								name="tempat_permandian"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Lengkap</label>
+							<input
+								type="text"
+								id="createBaptisNamaLengkap"
+								name="nama_lengkap"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Jenis Kelamin</label>
+							<input
+								type="text"
+								name="jenis_kelamin"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 5 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Ayah</label>
+							<input
+								type="text"
+								name="nama_ayah"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ibu</label>
+							<input
+								type="text"
+								name="nama_ibu"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama WaliBaptis</label>
+							<input
+								type="text"
+								name="nama_wali_baptis"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 6 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Pembaptis</label>
+							<input
+								type="text"
+								name="nama_pembaptis"
+								required />
+						</div>
+
+						<div class="input-box">
+							<label>Tanggal Penguatan</label>
+							<input
+								type="date"
+								name="tanggal_penguatan"
+								required />
+						</div>
+
+						<div class="input-box">
+							<label>Tempat Penguatan</label>
+							<input
+								type="text"
+								name="tempat_penguatan"
+								required />
+						</div>
+					</div>
+
+					<!-- Remaining Fields -->
+					<div class="input-box">
+						<label>Menikah dengan</label>
+						<input
+							type="text"
+							name="nama_pasangan"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Tanggal Pernikahan</label>
+						<input
+							type="date"
+							name="tanggal_pernikahan"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Tempat Pernikahan</label>
+						<input
+							type="text"
+							name="tempat_pernikahan"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Komuni 1</label>
+						<input
+							type="date"
+							name="tanggal_komuni"
+							required />
+					</div>
+
+					<label>KTP / KK</label>
+					<input
+						type="file"
+						required
+						name="file_kk_ktp" />
+					<div
+						id="suratPengantar"
+						style="display: none">
+						<label>Surat Pengantar</label>
+						<input
+							type="file"
+							required
+							name="file_surat_pengantar" />
+					</div>
+
+					<div
+						id="messageBox"
+						class="message-box"></div>
+
+					<input
+						type="submit"
+						name="save"
+						value="SUBMIT"
+						class="btn" />
+				</form>
+			</div>
+		</div>
+
+		<div
+			id="formDatabaseSurat"
+			class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2 id="modal-title">Database Surat Baptis</h2>
+				<table
+					id="table-surat"
+					border="1">
+					<thead>
+						<tr id="table-head">
+							<th>No</th>
+							<th>NoAdmin</th>
+							<th>Buku</th>
+							<th>Hal</th>
+							<th>Nomor</th>
+							<th>NIK</th>
+							<th>Tanggal Lahir</th>
+							<th>Tahun Lahir</th>
+							<th>Tempat Lahir</th>
+							<th>Tanggal Permandian</th>
+							<th>Tahun Permandian</th>
+							<th>Tempat Permandian</th>
+							<th>Nama Lengkap</th>
+							<th>Jenis Kelamin</th>
+							<th>Nama Ayah</th>
+							<th>Nama Ibu</th>
+							<th>Nama WaliBaptis</th>
+							<th>Nama Pembaptis</th>
+							<th>Tanggal Penguatan</th>
+							<th>Tempat Penguatan</th>
+							<th>Menikah dengan</th>
+							<th>Tanggal Pernikahan</th>
+							<th>Tempat Pernikahan</th>
+							<th>Komuni 1</th>
+							<th>File KK / KTP</th>
+							<th>File Surat Pengantar</th>
+							<th>ID Katekumen Dewasa</th>
+							<th>ID Katekumen Anak</th>
+						</tr>
+					</thead>
+					<tbody id="table-body-surat"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Modal3 -->
+		<div
+			id="formModal3"
+			class="modal">
+			<!-- Notification Box -->
+			<div class="modal-content">
+				<span
+					class="close-btn"
+					style="color: red"
+					>&times;</span
+				>
+				<div
+					id="messageBox"
+					class="message-box"></div>
+				<h2 class="modal-title">
+					PEMBUATAN KATEKUMEN ANAK PAROKI GEMBALA BAIK PONTIANAK
+				</h2>
+
+				<form
+					action="katekumen_anak.php"
+					method="POST"
+					class="form-container">
+					<!-- Row 1 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>NIK</label>
+							<input
+								type="text"
+								name="nik"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Lengkap</label>
+							<input
+								type="text"
+								name="nama_lengkap"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ayah</label>
+							<input
+								type="text"
+								name="nama_ayah"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 2 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Ibu</label>
+							<input
+								type="text"
+								name="nama_ibu"
+								required />
+						</div>
+						<div class="input-box">
+							<label>SD Kelas</label>
+							<input
+								type="text"
+								name="sd_kelas"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Sekolah</label>
+							<input
+								type="text"
+								name="nama_sekolah"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 3 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Mulai Katekumen</label>
+							<input
+								type="date"
+								name="tanggal_katekumen"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Alamat Lengkap</label>
+							<input
+								type="text"
+								name="alamat"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Gang(Komp)</label>
+							<input
+								type="text"
+								name="detail_alamat"
+								required />
+						</div>
+					</div>
+
+					<!-- Remaining Fields -->
+					<div class="input-box">
+						<label>Telp/HP</label>
+						<input
+							type="text"
+							name="no_telp"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Jumlah Katekumen</label>
+						<input
+							type="text"
+							name="jumlah_katekumen"
+							required />
+					</div>
+
+					<input
+						type="submit"
+						name="save"
+						value="SUBMIT"
+						class="btn" />
+				</form>
+			</div>
+		</div>
+
+		<div
+			id="formDatabaseKateAnak"
+			class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2 id="modal-title">Database Katekumen Anak</h2>
+				<table
+					id="table-surat"
+					border="1">
+					<thead>
+						<tr id="table-head">
+							<th>No</th>
+							<th>NoAdmin</th>
+							<th>NIK</th>
+							<th>Nama Lengkap</th>
+							<th>Nama Ayah</th>
+							<th>Nama Ibu</th>
+							<th>SD Kelas</th>
+							<th>Nama Sekolah</th>
+							<th>Mulai Katekumen</th>
+							<th>Alamat</th>
+							<th>Gang(Komp)</th>
+							<th>Telp/HP</th>
+							<th>Jumlah Katekumen</th>
+						</tr>
+					</thead>
+					<tbody id="table-body-kateanak"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<div
+			id="formDatabaseKateDewasa"
+			class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2 id="modal-title">Database Katekumen Dewasa</h2>
+				<table
+					id="table-surat"
+					border="1">
+					<thead>
+						<tr id="table-head">
+							<th>No</th>
+							<th>NoAdmin</th>
+							<th>NIK</th>
+							<th>Nama Lengkap</th>
+							<th>Nama Baptis</th>
+							<th>Tempat Lahir</th>
+							<th>Tanggal Lahir</th>
+							<th>Nama Ayah</th>
+							<th>Nama Ibu</th>
+							<th>Tanggal Perkawinan(Adat)</th>
+							<th>Tanggal Perkawinan(Gereja)</th>
+							<th>Nama Gereja</th>
+							<th>Nama Suami/Istri</th>
+							<th>Alamat Lengkap</th>
+							<th>Telp/HP</th>
+							<th>Jumlah Katekumen</th>
+						</tr>
+					</thead>
+					<tbody id="table-body-katedewasa"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Create Modal -->
+		<!-- MODAL PEMBUATAN KATEKUMEN DEWASA -->
+		<div
+			id="formModal4"
+			class="modal">
+			<!-- Notification Box -->
+			<div class="modal-content">
+				<span
+					class="close-btn"
+					style="color: red"
+					>&times;</span
+				>
+				<div
+					id="messageBox"
+					class="message-box"></div>
+				<h2 class="modal-title">
+					PEMBUATAN KATEKUMEN DEWASA PAROKI GEMBALA BAIK PONTIANAK
+				</h2>
+
+				<form
+					action="katekumen_dewasa.php"
+					method="POST"
+					class="form-container">
+					<!-- Row 1 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>NIK</label>
+							<input
+								type="text"
+								name="nik"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Lengkap(Harus Sesuai Akta Lahir)</label>
+							<input
+								type="text"
+								name="nama_lengkap"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Baptis</label>
+							<input
+								type="text"
+								name="nama_baptis"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 2 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Tempat Lahir</label>
+							<input
+								type="text"
+								name="tempat_lahir"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Lahir</label>
+							<input
+								type="date"
+								name="tanggal_lahir"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Ayah</label>
+							<input
+								type="text"
+								name="nama_ayah"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 3 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Ibu</label>
+							<input
+								type="text"
+								name="nama_ibu"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Perkawinan(Adat)</label>
+							<input
+								type="date"
+								name="tanggal_perkawinan_adat"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Tanggal Perkawinan(Gereja)</label>
+							<input
+								type="date"
+								name="tanggal_perkawinan_gereja"
+								required />
+						</div>
+					</div>
+
+					<!-- Row 4 -->
+					<div class="input-row">
+						<div class="input-box">
+							<label>Nama Gereja</label>
+							<input
+								type="text"
+								name="nama_gereja"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Nama Suami/Istri</label>
+							<input
+								type="text"
+								name="nama_suami_istri"
+								required />
+						</div>
+						<div class="input-box">
+							<label>Alamat Lengkap</label>
+							<input
+								type="text"
+								name="alamat"
+								required />
+						</div>
+					</div>
+
+					<!-- Remaining Fields -->
+					<div class="input-box">
+						<label>Telp/HP</label>
+						<input
+							type="text"
+							name="no_telp"
+							required />
+					</div>
+
+					<div class="input-box">
+						<label>Jumlah Katekumen</label>
+						<input
+							type="text"
+							name="jumlah_katekumen"
+							required />
+					</div>
+
+					<input
+						type="submit"
+						name="save"
+						value="SUBMIT"
+						class="btn" />
+				</form>
+			</div>
+		</div>
+
+		<script src="./js/admin_script.js"></script>
+		<script src="./js/admin_document_ready.js"></script>
+	</body>
+</html>

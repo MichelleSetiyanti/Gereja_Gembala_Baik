@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- jQuery -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<link
+			id="favicon"
+			rel="shortcut icon"
+			href="./assets/logo.png"
+			type="image/x-png" />
+		<title>Admin View | Gereja Katolik - Gembala Baik</title>
+		<link
+			rel="stylesheet"
+			href="./css/admin_view.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+			rel="stylesheet" />
+		<script>
+			function toggleMenu() {
+				document.querySelector(".nav-links").classList.toggle("active");
+			}
+		</script>
+
+		<!DOCTYPE html>
+		<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0" />
+				<style>
+					/* Hide both sections by default */
+					#baptismCertificate,
+					#print-report,
+					#print-roll-call,
+					.baptismCertificate,
+					.print-roll-call,
+					.print-report {
+						display: none;
+					}
+
+					/* Print Mode Styling */
+					@media print {
+						/* Hide unwanted elements (modify this list as needed) */
+						body
+							*:not(#print-report):not(#print-report *):not(#baptismCertificate):not(
+								#baptismCertificate *
+							):not(#baptismReport):not(#baptismReport *):not(
+								#baptismReport thead
+							):not(#baptismReport tbody):not(#baptismReport tr):not(
+								#baptismReport th
+							):not(#baptismReport td):not(#print-roll-call):not(
+								#print-roll-call *
+							):not(#baptismRollCall *):not(#baptismRollCall thead):not(
+								#baptismRollCall tbody
+							):not(#baptismRollCall tr):not(#baptismRollCall th):not(
+								#baptismRollCall td
+							) {
+							display: none !important;
+						}
+
+						/* Show only the selected section */
+						#baptismCertificate,
+						#baptismCertificate * {
+							display: grid !important;
+						}
+
+						#baptismCertificate #printSignature {
+							display: flex !important;
+						}
+
+						#print-roll-call {
+							color: black;
+							width: 100%;
+
+							display: block !important;
+						}
+
+						#print-roll-call,
+						#print-roll-call * {
+							display: block !important;
+						}
+
+						#print-roll-call > * {
+							color: black;
+							display: block !important;
+						}
+
+						#print-report {
+							color: black;
+							width: 100%;
+
+							display: block !important;
+						}
+
+						#print-report > * {
+							color: black;
+							display: block !important;
+						}
+
+						/* Hide print button */
+						#printButton {
+							display: none;
+						}
+
+						/* Additional Print Styles */
+						#baptismCertificate {
+							width: 100%;
+							padding: 20px;
+							font-family: serif;
+							color: black;
+							border: 2px solid black;
+							background: white;
+						}
+
+						/* Ensure the roll call section is visible */
+						#print-roll-call {
+							display: block !important;
+							width: 100%;
+						}
+
+						#baptismRollCall {
+							display: table !important;
+							width: 100%;
+							border-collapse: collapse;
+						}
+
+						#baptismRollCall thead {
+							display: table-header-group !important;
+						}
+
+						#baptismRollCall tbody {
+							display: table-row-group !important;
+						}
+
+						#baptismRollCall tr {
+							display: table-row !important;
+						}
+
+						#baptismRollCall th,
+						#baptismRollCall td {
+							display: table-cell !important;
+							padding: 8px;
+							border: 1px solid black;
+							text-align: center;
+						}
+
+						/* Ensure table text is black */
+						#baptismRollCall,
+						#baptismRollCall * {
+							color: black !important;
+						}
+					}
+
+					.grid {
+						display: grid;
+						justify-content: center;
+						align-items: center;
+						grid-template-columns: repeat(3, 1fr);
+						grid-gap: 50px 20px;
+					}
+				</style>
+			</head>
+			<body>
+				<header class="header">
+					<nav class="navbar">
+						<div class="logo-container">
+							<img
+								class="logo"
+								src="./assets/logo.png"
+								alt="Church logo" />
+						</div>
+						<div
+							class="menu-toggle"
+							onclick="toggleMenu()">
+							&#9776;
+						</div>
+						<div class="nav-links">
+							<!-- <a class="open-modal-btn">SAKRAMEN BAYI</a> -->
+							<!-- <a class="open-modal-btn">SAKRAMEN ANAK</a>
+          <a class="open-modal-btn1">SAKRAMEN DEWASA</a>
+          <a class="open-modal-btn2">SURAT BAPTIS</a> -->
+							<a href="index.html">LOGOUT</a>
+						</div>
+					</nav>
+				</header>
+
+				<!-- Baptism Certificate (Hidden by Default) -->
+				<div class="baptismCertificate">
+					<h2 style="text-align: center">Surat Permandian</h2>
+					<h2 style="text-align: center">(Extractum e Registro Baptismali)</h2>
+					<div class="grid">
+						<p><strong>Buku:</strong> <span id="printNomorBuku">___</span></p>
+						<p><strong>Hal:</strong> <span id="printNomorHal">___</span></p>
+						<p><strong>Nomor:</strong> <span id="printNomorBaptis">___</span></p>
+						<p>
+							<strong>Tanggal Lahir:</strong> <span id="printTanggalLahir">___</span>
+						</p>
+						<p>
+							<strong>Tempat Lahir:</strong> <span id="printTempatLahir">___</span>
+						</p>
+						<p><strong>Lahir:</strong></p>
+						<p>
+							<strong>Tanggal Permandian:</strong>
+							<span id="printTanggalPermandian">___</span>
+						</p>
+						<p>
+							<strong>Tempat Permandian:</strong>
+							<span id="printTempatPermandian">___</span>
+						</p>
+						<p><strong>dipermandikan:</strong></p>
+					</div>
+					<div style="display: flex; justify-content: center; margin-top: 30px">
+						<strong
+							id="printNamaLengkap"
+							style="font-size: 50px"></strong>
+					</div>
+					<div
+						class="grid"
+						style="margin-top: 30px">
+						<p><strong>Nama Ayah:</strong> <span id="printNamaAyah">___</span></p>
+						<p><strong>Nama Ibu:</strong> <span id="printNamaIbu">___</span></p>
+						<p>
+							<strong>Nama Wali Baptis:</strong>
+							<span id="printNamaWaliBaptis">___</span>
+						</p>
+						<p>
+							<strong>Yang Membaptis:</strong> <span id="printNamaPembaptis">___</span>
+						</p>
+						<p>
+							<strong>Tanggal Penguatan:</strong>
+							<span id="printTanggalPenguatan">___</span>
+						</p>
+						<p>
+							<strong>Tempat Penguatan:</strong>
+							<span id="printTempatPenguatan">___</span>
+						</p>
+						<p>
+							<strong>Menikah Dengan:</strong> <span id="printMenikahDengan">___</span>
+						</p>
+					</div>
+					<div
+						class="grid"
+						style="margin-top: 30px">
+						<p>
+							<strong>Tanggal Komuni:</strong> <span id="printTanggalKomuni">___</span>
+						</p>
+					</div>
+
+					<div
+						id="printSignature"
+						style="
+							display: flex;
+							margin-top: 40px;
+							width: 100%;
+							flex-direction: column;
+							align-items: start;
+						">
+						<div class="">
+							<p><strong>Untuk Keperluan :</strong></p>
+						</div>
+						<div>
+							<p style="display: flex; width: 100%">
+								Pontianak, <span id="signatureDate"></span>
+							</p>
+							<p>Sesuai dengan aslinya</p>
+
+							<p
+								style="margin-top: 50px"
+								id="printNamaPastorParoki">
+								_____________________
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="print-report">
+					<div style="display: flex; justify-content: center">
+						<h2 style="text-align: center; margin: 0">Laporan Baptis</h2>
+						<p
+							style="text-align: center; margin: 0; margin-bottom: 20px"
+							id="report-date"></p>
+						<table
+							id="baptismReport"
+							style="display: table">
+							<thead>
+								<tr>
+									<th>Tanggal Dibuat</th>
+									<th>ID Admin</th>
+									<th>NIK</th>
+									<th>Nama Lengkap</th>
+									<th>Nama Baptis</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>Terdaftar Di Biduk</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="baptismTableBody">
+								<!-- Data will be inserted here -->
+							</tbody>
+						</table>
+
+						<div
+							style="
+								display: flex;
+								flex-direction: column;
+								gap: 5px;
+								margin-top: 10px;
+							">
+							<div>
+								<p>
+									Jumlah Data Yang Terdaftar Di Biduk :
+									<span id="print-summary-terdaftar"></span>
+								</p>
+							</div>
+							<div>
+								<p>
+									Jumlah Data Yang Tidak Terdaftar Di Biduk :
+									<span id="print-summary-belum-terdaftar"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="print-roll-call">
+					<div style="display: flex; justify-content: center">
+						<h2 style="text-align: center; margin: 0">Absensi Baptis</h2>
+						<p
+							style="text-align: center; margin: 0; margin-bottom: 20px"
+							id="roll-call-date"></p>
+						<table
+							id="baptismRollCall"
+							style="display: table">
+							<thead>
+								<tr>
+									<th>Nomor</th>
+									<th>Nama Lengkap</th>
+									<th>NIK</th>
+									<th>Tanda Tangan</th>
+								</tr>
+							</thead>
+							<tbody id="baptismRollCallTable">
+								<!-- Data will be inserted here -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="content">
+					<h1>Verifikasi</h1>
+					<div
+						class="container"
+						style="flex-wrap: wrap; max-width: 100vw">
+						<div
+							class="card"
+							id="card-katekumen-anak"
+							style="display: none">
+							<h2>Formulir Katekumen Anak</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="katekumen_anak">
+								BUAT
+							</button>
+							<button class="BtnKateAnak">Lihat</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-katekumen-dewasa"
+							style="display: none">
+							<h2>Formulir Katekumen Dewasa</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="katekumen_dewasa">
+								BUAT
+							</button>
+							<button class="BtnKateDewasa">Lihat</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-sakramen-bayi"
+							style="display: none">
+							<h2>Formulir Sakramen Baptis Bayi</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="sakramen_bayi">
+								BUAT
+							</button>
+							<button class="BtnBayi">Lihat</button>
+						</div>
+
+						<!-- <div class="card">
+          <h2>Pembuatan Sakramen Anak</h2>
+          <button class="open-modal-btn">CREATE</button>
+          <button class="BtnAnak">View</button>
+        </div> -->
+						<div
+							class="card"
+							id="card-sakramen-dewasa"
+							style="display: none">
+							<h2>Formulir Sakramen Baptis Dewasa</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="sakramen_dewasa">
+								BUAT
+							</button>
+							<button class="BtnDewasa">Lihat</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-surat-baptis"
+							style="display: none">
+							<h2>Pembuatan Surat Baptis</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="surat_baptis">
+								BUAT
+							</button>
+							<button class="BtnSurat">Lihat</button>
+							<button
+								id="printButton"
+								class="btn"
+								data-type="baptis"
+								onclick="toggleYearSelectionModal(event)">
+								Laporan Baptis
+							</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-pembayaran-baptis"
+							style="display: none">
+							<h2>Manajemen Data Pengambilan Surat Baptis</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="pembayaran_surat_baptis">
+								BUAT
+							</button>
+							<button class="BtnPembayaranSuratBaptis">Lihat</button>
+							<button
+								id="printRollCallButton"
+								class="btn"
+								data-type="absen"
+								onclick="toggleYearSelectionModal(event)">
+								Presensi
+							</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-biduk"
+							style="display: none">
+							<h2>Manajemen Data Biduk</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="data_biduk">
+								BUAT
+							</button>
+							<button class="BtnBiduk">Lihat</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-lapbaptis"
+							style="display: none">
+							<h2>Cetak Laporan Baptis</h2>
+							<button
+								id="printButton"
+								class="open-modal-btn"
+								onclick="laporanBaptis()">
+								Cetak
+							</button>
+						</div>
+
+						<div
+							class="card"
+							id="card-pastor-paroki"
+							style="display: none">
+							<h2>Manajemen Data Pastor Paroki</h2>
+							<button
+								class="open-modal-btn"
+								data-table_name="pastor_paroki">
+								BUAT
+							</button>
+							<button class="BtnPastorParoki">Lihat</button>
+						</div>
+
+						<div
+							class="card"
+							id="backupdatabase"
+							style="display: none">
+							<h2>Backup Data</h2>
+							<form
+								action="backup.php"
+								method="post">
+								<button
+									type="submit"
+									name="backup"
+									class="btn">
+									BACKUP
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal5 -->
+				<div
+					id="formModal5"
+					class="modal">
+					<!-- Notification Box -->
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Sakramen Baptis Bayi</h2>
+
+						<form
+							action="sakramen_bayi.php"
+							method="POST"
+							class="form-container">
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK Keluarga</label>
+									<input
+										type="text"
+										name="nik"
+										id="sakramenBayiNik"
+										required />
+									<button
+										class="btn"
+										onclick="verifikasiNik(event,'sakramenBayiNik')">
+										Verifikasi NIK
+									</button>
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Diri Lengkap</label>
+									<input
+										type="text"
+										name="nama_diri"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Permandian</label>
+									<input
+										type="text"
+										name="nama_pemandian" />
+								</div>
+								<div class="input-box">
+									<label>Tempat Lahir</label>
+									<input
+										type="text"
+										name="tempat_lahir"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tanggal Lahir</label>
+									<input
+										type="date"
+										name="tanggal_lahir"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Gereja Pernikahan</label>
+									<input
+										type="text"
+										name="tempat_pernikahan" />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Pernikahan</label>
+									<input
+										type="date"
+										name="tanggal_pernikahan" />
+								</div>
+								<div class="input-box">
+									<label>LM Paroki</label>
+									<input
+										type="text"
+										name="lm_paroki" />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Pastor yang Memberkati</label>
+								<input
+									type="text"
+									name="pastor_memberkati" />
+							</div>
+
+							<div class="input-box">
+								<label>Bapa/Ibu Permandian (Saksi)</label>
+								<input
+									type="text"
+									name="saksi_permandian" />
+							</div>
+
+							<div class="input-box">
+								<label>Alamat Lengkap</label>
+								<input
+									type="text"
+									name="alamat"
+									required />
+							</div>
+
+							<div class="input-box">
+								<label>No HP/Telp</label>
+								<input
+									type="text"
+									name="no_telp" />
+							</div>
+
+							<label>KTP / KK</label>
+							<input
+								type="file"
+								accept="image/*"
+								name="file_kk_ktp" />
+							<div
+								class="suratPengantar"
+								style="display: none">
+								<label>Surat Pengantar</label>
+								<input
+									type="file"
+									accept="image/*"
+									name="file_surat_pengantar" />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseBayi"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Sakramen Baptis Bayi</h2>
+						<table
+							id="table-anak"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NoAdmin</th>
+									<th>NIK</th>
+									<th>Nama Diri Lengkap</th>
+									<th>Nama Permandian</th>
+									<th>Tempat Lahir</th>
+									<th>Tanggal Lahir</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>Gereja Pernikahan</th>
+									<th>Tanggal Pernikahan</th>
+									<th>LM Paroki</th>
+									<th>Pastor yang Memberkati</th>
+									<th>Bapa/Ibu Permandian (Saksi)</th>
+									<th>Alamat Lengkap</th>
+									<th>No HP/Telp</th>
+									<th>File KK / KTP</th>
+									<th>File Surat Pengantar</th>
+
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-bayi"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div
+					id="formDatabasePastorParoki"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Pastor Paroki</h2>
+						<table
+							id="table-anak"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>Nama Pastor Paroki</th>
+
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-pastor"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div
+					id="formEditPastorParoki"
+					class="modal">
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Data Pastor Paroki</h2>
+
+						<form
+							action="pembayaran_surat_baptis.php"
+							method="POST"
+							class="form-container">
+							<div class="input-row">
+								<input
+									type="hidden"
+									id="editIdPastorParoki"
+									name="id" />
+
+								<div class="input-box">
+									<label>Nama Pastor:</label>
+									<input
+										type="text"
+										id="editNamaPastorParoki"
+										name="nama_pastor"
+										required />
+								</div>
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#formEditPembayaranBaptis').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Modal1 -->
+				<div
+					id="formModal1"
+					class="modal">
+					<!-- Notification Box -->
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Sakramen Baptis Dewasa</h2>
+
+						<form
+							action="sakramen_dewasa.php"
+							method="POST"
+							class="form-container">
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										onchange="handleSakramenDewasaNIKSearch(event)"
+										type="text"
+										name="nik"
+										id="createSakramenDewasaNIKPersonal"
+										required />
+								</div>
+								<div class="input-box">
+									<label>NIK Keluarga</label>
+									<input
+										type="text"
+										id="sakramenDewasaNik"
+										required />
+									<button
+										class="btn"
+										onclick="verifikasiNik(event,'sakramenDewasaNik')">
+										Verifikasi NIK
+									</button>
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Diri Lengkap</label>
+									<input
+										type="text"
+										id="createSakramenDewasaNamaDiriLengkap"
+										name="nama_diri"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										id="createSakramenDewasaNamaAyah"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										id="createSakramenDewasaNamaIbu"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Suami/Istri </label>
+									<input
+										type="text"
+										name="nama_suami_istri"
+										id="createSakramenDewasaNamaSuamiIstri" />
+								</div>
+								<div class="input-box">
+									<label>Tempat Pernikahan</label>
+									<input
+										type="text"
+										id="createSakramenDewasaTempatPernikahan"
+										name="tempat_pernikahan" />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tanggal Pernikahan</label>
+									<input
+										type="date"
+										id="createSakramenDewasaTanggalPernikahan"
+										name="tanggal_pernikahan" />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Bapa/Ibu Permandian(Saksi)</label>
+								<input
+									type="text"
+									name="saksi_permandian"
+									id="createSakramenDewasaSaksiPermandian"
+									required />
+							</div>
+							<div class="input-box">
+								<label>LM Paroki</label>
+								<input
+									type="text"
+									name="lm_paroki"
+									id="createSakramenDewasaLMParoki"
+									required />
+							</div>
+
+							<div class="input-box">
+								<label>Alamat Lengkap</label>
+								<input
+									type="text"
+									name="alamat"
+									id="createSakramenDewasaAlamat"
+									required />
+							</div>
+
+							<div class="input-box">
+								<label>No HP/Telp</label>
+								<input
+									type="text"
+									name="no_hp"
+									id="createSakramenDewasaNoHp"
+									required />
+							</div>
+
+							<div id="kartu_katekumen">
+								<label>Kartu Katekumen</label>
+								<input
+									type="file"
+									required
+									accept="image/*"
+									name="kartu_katekumen" />
+							</div>
+
+							<div class="input-box">
+								<label>Jumlah Katekumen</label>
+								<input
+									type="text"
+									name="jumlah_katekumen"
+									required />
+							</div>
+
+							<label>KTP / KK</label>
+							<input
+								type="file"
+								required
+								accept="image/*"
+								name="file_kk_ktp" />
+							<div
+								class="suratPengantar"
+								style="display: none">
+								<label>Surat Pengantar</label>
+								<input
+									type="file"
+									accept="image/*"
+									name="file_surat_pengantar" />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formModalBiduk"
+					class="modal">
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Data Biduk</h2>
+
+						<form
+							action="database_biduk.php"
+							method="POST"
+							class="form-container">
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										type="text"
+										name="nik"
+										required />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Keluarga:</label>
+									<input
+										type="text"
+										name="nama_keluarga"
+										required />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>Alamat:</label>
+								<input
+									type="text"
+									name="alamat"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+				<div
+					id="formPembayaranBaptis"
+					class="modal">
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Data Pembayaran Baptis</h2>
+
+						<form
+							action="database_biduk.php"
+							method="POST"
+							class="form-container">
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										oninput="handleBaptisPembayaranNik(event)"
+										id="createPembayaranBaptisNIK"
+										type="text"
+										name="nik"
+										required />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Lengkap:</label>
+									<input
+										id="createPembayaranBaptisNamaLengkap"
+										type="text"
+										name="nama_lengkap"
+										required />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>Tanggal Baptis:</label>
+								<input
+									id="createPembayaranBaptisTanggalBaptis"
+									type="date"
+									name="tanggal_baptis"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formPastorParoki"
+					class="modal">
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Nama Pastor Paroki</h2>
+
+						<form
+							action="database_biduk.php"
+							method="POST"
+							class="form-container">
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Pastor:</label>
+									<input
+										type="text"
+										name="nama_pastor"
+										required />
+								</div>
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseDewasa"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Sakramen Baptis Dewasa</h2>
+						<table
+							id="table-dewasa"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NoAdmin</th>
+									<th>NIK</th>
+									<th>Nama Diri Lengkap</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>Nama Suami/Istri</th>
+									<th>Tempat Pernikahan</th>
+									<th>Tanggal Pernikahan</th>
+									<th>Bapa/Ibu Permandian(Saksi)</th>
+									<th>LM Paroki</th>
+									<th>Alamat Lengkap</th>
+									<th>Nomor HP</th>
+									<th>Kartu Katekumen</th>
+									<th>Jumlah Katekumen</th>
+									<th>File KK / KTP</th>
+									<th>File Surat Pengantar</th>
+									<th>Status</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-dewasa"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseBiduk"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Data Biduk</h2>
+						<table
+							id="table-biduk"
+							border="1"
+							style="color: black">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>Id Admin</th>
+									<th>NIK Keluarga</th>
+									<th>Nama</th>
+									<th>Alamat</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-biduk"></tbody>
+						</table>
+					</div>
+				</div>
+				<div
+					id="formDatabasePembayaranSuratBaptis"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Pembayaran Surat Baptis</h2>
+						<table
+							id="table-pembayaran"
+							border="1"
+							style="color: black">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NIK</th>
+									<th>Nama Lengkap</th>
+									<th>Tanggal Baptis</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-pembayaran"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div
+					id="formEditPembayaranBaptis"
+					class="modal">
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Data Pembayaran Baptis</h2>
+
+						<form
+							action="pembayaran_surat_baptis.php"
+							method="POST"
+							class="form-container">
+							<div class="input-row">
+								<input
+									type="hidden"
+									id="editIdPembayaran"
+									name="id" />
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										type="text"
+										id="editNIKPembayaran"
+										name="nik"
+										required />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Lengkap:</label>
+									<input
+										type="text"
+										id="editNamaLengkapPembayaran"
+										name="nama_lengkap"
+										required />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>Tanggal Baptis:</label>
+								<input
+									type="text"
+									id="editTanggalBaptisPembayaran"
+									name="tanggal_baptis"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#formEditPembayaranBaptis').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+				<!-- Modal2 -->
+				<div
+					id="formModal2"
+					class="modal">
+					<!-- Notification Box -->
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+						<h2 class="modal-title">Form Surat Baptis</h2>
+
+						<form
+							action="surat_baptis.php"
+							method="POST"
+							enctype="multipart/form-data"
+							class="form-container">
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Buku</label>
+									<input
+										id="createNoBukuBaptis"
+										type="text"
+										name="no_buku" />
+								</div>
+								<div class="input-box">
+									<label>Hal</label>
+									<input
+										id="createNoHalBaptis"
+										type="text"
+										name="no_hal" />
+								</div>
+								<div class="input-box">
+									<label>Nomor</label>
+									<input
+										id="createNoBaptis"
+										type="text"
+										name="no_baptis" />
+								</div>
+							</div>
+							<div
+								class="input-row"
+								id="tipe-selection"
+								style="display: none">
+								<div class="input-box">
+									<label>Tipe Baptis</label>
+									<select
+										name="type"
+										id="baptisCreateKatekumenType"
+										onchange="handleBaptisTypeChange(event)">
+										<option value="dewasa">Dewasa</option>
+										<option value="bayi">Bayi</option>
+									</select>
+								</div>
+							</div>
+							<!-- <div
+								id="sakramen-selection"
+								style="display: block">
+								<div class="input-box">
+									<label>Sakramen</label>
+									<select
+										name="sakramen_id"
+										id="baptisCreateKatekumenId">
+										<option
+											value=""
+											hidden
+											selected>
+											Pilih
+										</option>
+									</select>
+								</div>
+							</div> -->
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										oninput="handleBaptisNikSearch(event)"
+										name="nik"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Lahir</label>
+									<input
+										type="date"
+										name="tanggal_lahir"
+										id="createBaptisTanggalLahir"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tempat Lahir</label>
+									<input
+										type="text"
+										name="tempat_lahir"
+										id="createBaptisTempatLahir"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Permandian</label>
+									<input
+										type="date"
+										name="tanggal_permandian"
+										id="createBaptisTanggalPermandian"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tempat Permandian</label>
+									<input
+										type="text"
+										name="tempat_permandian"
+										id="createBaptisTempatPermandian"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Lengkap</label>
+									<input
+										type="text"
+										id="createBaptisNamaLengkap"
+										name="nama_lengkap"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Baptis</label>
+									<input
+										type="text"
+										name="nama_baptis"
+										id="createBaptisNamaBaptis"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Jenis Kelamin</label>
+									<input
+										type="text"
+										name="jenis_kelamin"
+										id="createBaptisJenisKelamin"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Alamat</label>
+									<input
+										type="text"
+										name="alamat"
+										id="createBaptisAlamat"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 5 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										id="createBaptisNamaAyah"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										id="createBaptisNamaIbu"
+										required />
+								</div>
+
+								<div class="input-box">
+									<label>Nama WaliBaptis</label>
+									<input
+										type="text"
+										name="nama_wali_baptis"
+										id="createBaptisNamaWaliBaptis" />
+								</div>
+							</div>
+
+							<!-- Row 6 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Pembaptis</label>
+									<input
+										type="text"
+										name="nama_pembaptis"
+										id="createBaptisNamaPembaptis" />
+								</div>
+
+								<div class="input-box">
+									<label>Tanggal Penguatan</label>
+									<input
+										type="date"
+										name="tanggal_penguatan"
+										id="createBaptisTanggalPenguatan" />
+								</div>
+
+								<div class="input-box">
+									<label>Tempat Penguatan</label>
+									<input
+										type="text"
+										name="tempat_penguatan"
+										id="createBaptisTempatPenguatan" />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Menikah dengan</label>
+								<input
+									type="text"
+									id="createBaptisNamaPasangan"
+									name="nama_pasangan" />
+							</div>
+
+							<div class="input-box">
+								<label>Tanggal Pernikahan</label>
+								<input
+									type="date"
+									id="createBaptisTanggalPernikahan"
+									name="tanggal_pernikahan" />
+							</div>
+
+							<div class="input-box">
+								<label>Tempat Pernikahan</label>
+								<input
+									type="text"
+									id="createBaptisTempatPernikahan"
+									name="tempat_pernikahan" />
+							</div>
+
+							<div class="input-box">
+								<label>Komuni 1</label>
+								<input
+									type="date"
+									id="createBaptisTanggalKomuni"
+									name="tanggal_komuni" />
+							</div>
+							<div class="input-box">
+								<label>Nama Pastor Paroki</label>
+								<select
+									name="nama_pastor_paroki"
+									id="baptisCreatePastorParoki">
+									<option
+										value=""
+										hidden
+										selected>
+										Pilih
+									</option>
+								</select>
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseSurat"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Surat Baptis</h2>
+						<table
+							id="table-surat"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NoAdmin</th>
+									<th>Buku</th>
+									<th>Hal</th>
+									<th>Nomor</th>
+									<th>NIK</th>
+									<th>Alamat</th>
+									<th>Tanggal Lahir</th>
+									<th>Tempat Lahir</th>
+									<th>Tanggal Permandian</th>
+									<th>Tempat Permandian</th>
+									<th>Nama Lengkap</th>
+									<th>Nama Baptis</th>
+									<th>Jenis Kelamin</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>Nama WaliBaptis</th>
+									<th>Nama Pembaptis</th>
+									<th>Tanggal Penguatan</th>
+									<th>Tempat Penguatan</th>
+									<th>Menikah dengan</th>
+									<th>Tanggal Pernikahan</th>
+									<th>Tempat Pernikahan</th>
+									<th>Komuni 1</th>
+									<th>Tipe Baptis</th>
+									<th>ID Sakramen Dewasa</th>
+									<th>Nama Pastor Paroki</th>
+									<th>Status Baptis</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-surat"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Modal3 -->
+				<div
+					id="formModal3"
+					class="modal">
+					<!-- Notification Box -->
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Katekumen Anak</h2>
+
+						<form
+							action="katekumen_anak.php"
+							method="POST"
+							class="form-container">
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										name="nik"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Lengkap</label>
+									<input
+										type="text"
+										name="nama_lengkap"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										required />
+								</div>
+								<div class="input-box">
+									<label>SD Kelas</label>
+									<input
+										type="text"
+										name="sd_kelas"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Sekolah</label>
+									<input
+										type="text"
+										name="nama_sekolah"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Mulai Katekumen</label>
+									<input
+										type="date"
+										name="tanggal_katekumen"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Alamat Lengkap</label>
+									<input
+										type="text"
+										name="alamat"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Gang(Komp)</label>
+									<input
+										type="text"
+										name="detail_alamat"
+										required />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Telp/HP</label>
+								<input
+									type="text"
+									name="no_telp"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseKateAnak"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Katekumen Anak</h2>
+						<table
+							id="table-surat"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NoAdmin</th>
+									<th>NIK</th>
+									<th>Nama Lengkap</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>SD Kelas</th>
+									<th>Nama Sekolah</th>
+									<th>Mulai Katekumen</th>
+									<th>Alamat</th>
+									<th>Gang(Komp)</th>
+									<th>Telp/HP</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-kateanak"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<div
+					id="formDatabaseKateDewasa"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Data Katekumen Dewasa</h2>
+						<table
+							id="table-surat"
+							border="1">
+							<thead>
+								<tr id="table-head">
+									<th>No</th>
+									<th>NoAdmin</th>
+									<th>NIK</th>
+									<th>Nama Lengkap</th>
+									<th>Tempat Lahir</th>
+									<th>Tanggal Lahir</th>
+									<th>Nama Ayah</th>
+									<th>Nama Ibu</th>
+									<th>Nama Gereja</th>
+									<th>Nama Suami/Istri</th>
+									<th>Alamat Lengkap</th>
+									<th>Telp/HP</th>
+									<th class="action_column">Aksi</th>
+								</tr>
+							</thead>
+							<tbody id="table-body-katedewasa"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Create Modal -->
+				<!-- MODAL PEMBUATAN KATEKUMEN DEWASA -->
+				<div
+					id="formModal4"
+					class="modal">
+					<!-- Notification Box -->
+					<div class="modal-content">
+						<span
+							class="close-btn"
+							style="color: red"
+							>&times;</span
+						>
+
+						<h2 class="modal-title">Form Katekumen Dewasa</h2>
+
+						<form
+							action="katekumen_dewasa.php"
+							method="POST"
+							class="form-container">
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										name="nik"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Lengkap(Harus Sesuai Akta Lahir)</label>
+									<input
+										type="text"
+										name="nama_lengkap"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tempat Lahir</label>
+									<input
+										type="text"
+										name="tempat_lahir"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Lahir</label>
+									<input
+										type="date"
+										name="tanggal_lahir"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Gereja</label>
+									<input
+										type="text"
+										name="nama_gereja"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Suami/Istri</label>
+									<input
+										type="text"
+										name="nama_suami_istri" />
+								</div>
+								<div class="input-box">
+									<label>Alamat Lengkap</label>
+									<input
+										type="text"
+										name="alamat"
+										required />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Telp/HP</label>
+								<input
+									type="text"
+									name="no_telp"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<input
+								type="submit"
+								name="save"
+								value="SUBMIT"
+								class="btn" />
+						</form>
+					</div>
+				</div>
+
+				<!-- Edit Modal -->
+				<div
+					class="modal"
+					id="editDatabaseBayi">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editFormBayi"
+							class="form-container">
+							<div class="input-row">
+								<input
+									type="hidden"
+									id="editId"
+									name="id" />
+								<input
+									type="hidden"
+									id="editIdAdmin"
+									name="id_admin" />
+
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										type="text"
+										id="editNik"
+										name="nik"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Diri Lengkap:</label>
+									<input
+										type="text"
+										id="editNama"
+										name="nama_diri"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Nama Permandian:</label>
+									<input
+										type="text"
+										id="editNamaPermandian"
+										name="nama_pemandian"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Tempat Lahir:</label>
+									<input
+										type="text"
+										id="editTempatLahir"
+										name="tempat_lahir"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tanggal Lahir:</label>
+									<input
+										type="date"
+										id="editTanggalLahir"
+										name="tanggal_lahir"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah:</label>
+									<input
+										type="text"
+										id="editNamaAyah"
+										name="nama_ayah"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Nama Ibu:</label>
+									<input
+										type="text"
+										id="editNamaIbu"
+										name="nama_ibu"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Gereja Pernikahan:</label>
+									<input
+										type="text"
+										id="editGerejaPernikahan"
+										name="tempat_pernikahan" /><br />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Pernikahan:</label>
+									<input
+										type="date"
+										id="editTanggalPernikahan"
+										name="tanggal_pernikahan" /><br />
+								</div>
+								<div class="input-box">
+									<label>LM Paroki:</label>
+									<input
+										type="text"
+										id="editLMParoki"
+										name="lm_paroki" /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Pastor Yang Memberkati:</label>
+									<input
+										type="text"
+										id="editPastorBerkat"
+										name="pastor_memberkati" /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Bapa/Ibu Permandian:</label>
+									<input
+										type="text"
+										id="editSaksi"
+										name="saksi_permandian"
+										required /><br />
+								</div>
+
+								<div class="input-box">
+									<label>Alamat Lengkap:</label>
+									<input
+										type="text"
+										id="editAlamat"
+										name="alamat"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>No HP/Telp:</label>
+								<input
+									type="text"
+									id="editHp"
+									name="no_telp"
+									required /><br />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseBayi').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					class="modal"
+					id="editDatabaseBiduk">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editFormBiduk"
+							class="form-container">
+							<div class="input-row">
+								<input
+									type="hidden"
+									id="editIdBiduk"
+									name="id" />
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										type="text"
+										id="editNIKBiduk"
+										name="nik"
+										required />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Keluarga:</label>
+									<input
+										type="text"
+										id="editNamaKeluargaBiduk"
+										name="nama_keluarga"
+										required />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>Alamat:</label>
+								<input
+									type="text"
+									id="editAlamatBiduk"
+									name="alamat"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseBiduk').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="editDatabaseDewasa"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editFormDewasa"
+							class="form-container">
+							<div class="input-row">
+								<input
+									type="hidden"
+									id="editIddewasa"
+									name="id" />
+								<!-- <input type="hidden" id="editIdAdmindewasa" name="id_admin"> -->
+
+								<div class="input-box">
+									<label>NIK:</label>
+									<input
+										type="text"
+										id="editNIK"
+										name="nik"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Diri Lengkap:</label>
+									<input
+										type="text"
+										id="editNamaLeng"
+										name="nama_diri"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah:</label>
+									<input
+										type="text"
+										id="editAyah"
+										name="nama_ayah"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu:</label>
+									<input
+										type="text"
+										id="editIbu"
+										name="nama_ibu"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>Nama Suami/Istri:</label>
+									<input
+										type="text"
+										id="editNamaPasangan"
+										name="nama_suami_istri" /><br />
+								</div>
+								<div class="input-box">
+									<label>Tempat Pernikahan:</label>
+									<input
+										type="text"
+										id="editTempatPernikahan"
+										name="tempat_pernikahan" /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tanggal Pernikahan:</label>
+									<input
+										type="date"
+										id="editTanggalNikah"
+										name="tanggal_pernikahan" /><br />
+								</div>
+							</div>
+
+							<div class="input-row">
+								<div class="input-box">
+									<label>Bapa/Ibu Permandian:</label>
+									<input
+										type="text"
+										id="editSaksiMandi"
+										name="saksi_permandian"
+										required /><br />
+								</div>
+								<div class="input-box">
+									<label>LM Paroki:</label>
+									<input
+										type="text"
+										id="editLM"
+										name="lm_paroki"
+										required /><br />
+								</div>
+							</div>
+
+							<div class="input-box">
+								<label>Alamat Lengkap:</label>
+								<input
+									type="text"
+									id="editAlamats"
+									name="alamat"
+									required /><br />
+							</div>
+
+							<div class="input-box">
+								<label>No HP/Telp:</label>
+								<input
+									type="text"
+									id="editHandpon"
+									name="no_hp"
+									required /><br />
+							</div>
+
+							<div class="input-box">
+								<label>Jumlah Katekumen</label>
+								<input
+									type="text"
+									name="jumlah_katekumen"
+									id="editJumlahKatekumenSakramenDewasa"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseDewasa').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="editDatabaseKatekumenDewasa"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editKatekumenDewasa"
+							class="form-container">
+							<input
+								type="hidden"
+								id="editIdKateDewasa"
+								name="id" />
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										name="nik"
+										id="editNIKKateDewasa"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Lengkap(Harus Sesuai Akta Lahir)</label>
+									<input
+										type="text"
+										name="nama_lengkap"
+										id="editNamaLengkapKateDewasa"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tempat Lahir</label>
+									<input
+										type="text"
+										name="tempat_lahir"
+										id="editTempatLahirKateDewasa"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Lahir</label>
+									<input
+										type="date"
+										name="tanggal_lahir"
+										id="editTanggalLahirKateDewasa"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										id="editAyahKateDewasa"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										id="editIbuKateDewasa"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Gereja</label>
+									<input
+										type="text"
+										name="nama_gereja"
+										id="editNamaGerejaKateDewasa"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Suami/Istri</label>
+									<input
+										type="text"
+										name="nama_suami_istri"
+										id="editNamaSuamiIstriKateDewasa"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Alamat Lengkap</label>
+									<input
+										type="text"
+										name="alamat"
+										id="editAlamatKateDewasa"
+										required />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Telp/HP</label>
+								<input
+									type="text"
+									name="no_telp"
+									id="editNoHpKateDewasa"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseKatekumenDewasa').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="editDatabaseKatekumenAnak"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editKatekumenAnak"
+							class="form-container">
+							<input
+								type="hidden"
+								id="editIdKateAnak"
+								name="id" />
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										name="nik"
+										id="editNIKKateAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Lengkap</label>
+									<input
+										type="text"
+										name="nama_lengkap"
+										id="editNamaLengkapKateAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										id="editAyahKateAnak"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										id="editIbuKateAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>SD Kelas</label>
+									<input
+										type="text"
+										name="sd_kelas"
+										id="editSdKelasKateAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Sekolah</label>
+									<input
+										type="text"
+										name="nama_sekolah"
+										id="editNamaSekolahKateAnak"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Mulai Katekumen</label>
+									<input
+										type="date"
+										name="tanggal_katekumen"
+										id="editTanggalKatekumenAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Alamat Lengkap</label>
+									<input
+										type="text"
+										name="alamat"
+										id="editAlamatKateAnak"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Gang(Komp)</label>
+									<input
+										type="text"
+										name="detail_alamat"
+										id="editDetailAlamatKateAnak"
+										required />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Telp/HP</label>
+								<input
+									type="text"
+									name="no_telp"
+									id="editNoHpKateAnak"
+									required />
+							</div>
+
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseKatekumenAnak').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="editDatabaseBaptis"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2 id="modal-title">Edit Data</h2>
+
+						<form
+							id="editKatekumenBaptis"
+							class="form-container">
+							<input
+								type="hidden"
+								id="editIdBaptis"
+								name="id" />
+							<!-- Row 1 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Buku</label>
+									<input
+										type="text"
+										name="no_buku"
+										id="editNoBukuBaptis" />
+								</div>
+								<div class="input-box">
+									<label>Hal</label>
+									<input
+										type="text"
+										name="no_hal"
+										id="editNoHalBaptis" />
+								</div>
+								<div class="input-box">
+									<label>Nomor</label>
+									<input
+										type="text"
+										name="no_baptis"
+										id="editNoBaptisBaptis" />
+								</div>
+							</div>
+
+							<!-- Row 2 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>NIK</label>
+									<input
+										type="text"
+										name="nik"
+										id="editNikBaptis"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Lahir</label>
+									<input
+										type="date"
+										id="editTanggalLahirBaptis"
+										name="tanggal_lahir"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 3 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Tempat Lahir</label>
+									<input
+										type="text"
+										name="tempat_lahir"
+										id="editTempatLahirBaptis"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Tanggal Permandian</label>
+									<input
+										type="date"
+										id="editTanggalPermandianBaptis"
+										name="tanggal_permandian" />
+								</div>
+								<div class="input-box">
+									<label>Tempat Permandian</label>
+									<input
+										type="text"
+										id="editTempatPermandianBaptis"
+										name="tempat_permandian" />
+								</div>
+							</div>
+
+							<!-- Row 4 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Lengkap</label>
+									<input
+										type="text"
+										id="editNamaLengkapBaptis"
+										name="nama_lengkap"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Baptis</label>
+									<input
+										type="text"
+										name="nama_baptis"
+										id="editNamaBaptisBaptis" />
+								</div>
+								<div class="input-box">
+									<label>Jenis Kelamin</label>
+									<input
+										type="text"
+										name="jenis_kelamin"
+										id="editJenisKelaminBaptis" />
+								</div>
+								<div class="input-box">
+									<label>Alamat</label>
+									<input
+										type="text"
+										name="alamat"
+										id="editAlamatBaptis"
+										required />
+								</div>
+							</div>
+
+							<!-- Row 5 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Ayah</label>
+									<input
+										type="text"
+										name="nama_ayah"
+										id="editNamaAyahBaptis"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama Ibu</label>
+									<input
+										type="text"
+										name="nama_ibu"
+										id="editNamaIbuBaptis"
+										required />
+								</div>
+								<div class="input-box">
+									<label>Nama WaliBaptis</label>
+									<input
+										type="text"
+										id="editNamaWaliBaptisBaptis"
+										name="nama_wali_baptis" />
+								</div>
+							</div>
+
+							<!-- Row 6 -->
+							<div class="input-row">
+								<div class="input-box">
+									<label>Nama Pembaptis</label>
+									<input
+										type="text"
+										name="nama_pembaptis"
+										id="editNamaPembaptisBaptis" />
+								</div>
+
+								<div class="input-box">
+									<label>Tanggal Penguatan</label>
+									<input
+										type="date"
+										id="editTanggalPenguatanBaptis"
+										name="tanggal_penguatan" />
+								</div>
+
+								<div class="input-box">
+									<label>Tempat Penguatan</label>
+									<input
+										type="text"
+										id="editTempatPenguatanBaptis"
+										name="tempat_penguatan" />
+								</div>
+							</div>
+
+							<!-- Remaining Fields -->
+							<div class="input-box">
+								<label>Menikah dengan</label>
+								<input
+									type="text"
+									name="nama_pasangan"
+									id="editNamaPasanganBaptis" />
+							</div>
+
+							<div class="input-box">
+								<label>Tanggal Pernikahan</label>
+								<input
+									type="date"
+									id="editTanggalPernikahanBaptis"
+									name="tanggal_pernikahan" />
+							</div>
+
+							<div class="input-box">
+								<label>Tempat Pernikahan</label>
+								<input
+									type="text"
+									id="editTempatPernikahanBaptis"
+									name="tempat_pernikahan" />
+							</div>
+
+							<div class="input-box">
+								<label>Komuni 1</label>
+								<input
+									type="date"
+									name="tanggal_komuni"
+									id="editTanggalKomuniBaptis" />
+							</div>
+
+							<div class="input-box">
+								<label>Nama Pastor Paroki</label>
+								<select
+									name="nama_pastor_paroki"
+									id="editBaptisPastorParoki">
+									<option
+										value=""
+										hidden
+										selected>
+										Pilih
+									</option>
+								</select>
+							</div>
+							<div
+								id="messageBox"
+								class="message-box"></div>
+							<button
+								class="btn"
+								type="submit">
+								Update
+							</button>
+							<button
+								class="btn"
+								type="button"
+								onclick="$('#editDatabaseBaptis').hide()">
+								Batal
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="deleteModalPopUp"
+					class="modal">
+					<div
+						class="modal-content"
+						style="width: 30%; display: flex; justify-content: center">
+						<h3 style="color: black"></h3>
+					</div>
+				</div>
+
+				<div
+					id="tahunLaporanModal"
+					class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2
+							id="modal-title"
+							class="titleModalTahun">
+							Tahun Laporan
+						</h2>
+						<form
+							id="tahunLaporanForm"
+							class="form-container">
+							<input
+								hidden
+								type="text"
+								id="typeModal" />
+							<div class="input-box">
+								<label id="labelTahunModal">Tahun Laporan</label>
+								<input
+									type="number"
+									min="2000"
+									id="tahunLaporan" />
+							</div>
+
+							<button
+								class="btn"
+								onclick="handleYearSelectionModalPrint(event)">
+								Print
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<div
+					id="nikVerificationPopUp"
+					class="modal">
+					<div
+						class="modal-content"
+						style="
+							width: 30%;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							color: black;
+						">
+						<h3></h3>
+						<div
+							id="informationBiduk"
+							style="display: none">
+							<h4>Nama Keluarga : <span id="verifNamaAyah"></span></h4>
+							<h4>Alamat: <span id="verifAlamat"></span></h4>
+						</div>
+					</div>
+				</div>
+
+				<script src="./js//admin_script.js"></script>
+				<script src="./js/admin_document_ready.js"></script>
+			</body>
+		</html>
+	</head>
+</html>
