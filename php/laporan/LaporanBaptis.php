@@ -22,11 +22,10 @@ $sql = "SELECT
        sb.nama_baptis, 
        sb.nama_ayah, 
        sb.nama_ibu,
-       sb.status,
        CASE 
            WHEN EXISTS (SELECT 1 FROM data_biduk db WHERE db.nik = sb.nik) 
-           THEN 'Data Terdaftar Di Biduk'
-           ELSE 'Data Tidak Terdaftar Di Biduk' 
+           THEN 'Terdaftar Di Biduk'
+           ELSE 'Tidak Terdaftar Di Biduk' 
        END AS is_exist
 FROM surat_baptis sb WHERE sb.created_at BETWEEN CONCAT($reportYear, '-01-01') AND CONCAT($reportYear, '-12-31 23:59:59') ORDER BY sb.created_at DESC";
 

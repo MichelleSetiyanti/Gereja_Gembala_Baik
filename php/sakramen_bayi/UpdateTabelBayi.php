@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Bind parameter ke statement (semua dalam format string kecuali id)
-    $stmt->bind_param("iisssssssssssss", $nik, $nama_diri, $nama_pemandian, $tempat_lahir, $tanggal_lahir, $nama_ayah, $nama_ibu, $tempat_pernikahan, $tanggal_pernikahan, $lm_paroki, $pastor_memberkati, $saksi_permandian, $alamat, $no_telp, $id);
+    $stmt->bind_param("issssssssssssss", $nik, $nama_diri, $nama_pemandian, $tempat_lahir, $tanggal_lahir, $nama_ayah, $nama_ibu, $tempat_pernikahan, $tanggal_pernikahan, $lm_paroki, $pastor_memberkati, $saksi_permandian, $alamat, $no_telp, $id);
 
     // Eksekusi query
     if ($stmt->execute()) {

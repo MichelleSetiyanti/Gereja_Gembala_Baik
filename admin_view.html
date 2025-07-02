@@ -60,6 +60,13 @@
               display: none !important;
             }
 
+            @page {
+              size: A4;
+              margin: 0;
+              -webkit-print-color-adjust: exact;
+              orphans: 0;
+              widows: 0;
+            }
             /* Show only the selected section */
             #baptismCertificate,
             #baptismCertificate * {
@@ -73,7 +80,7 @@
             #print-roll-call {
               color: black;
               width: 100%;
-
+              padding: 2.5cm;
               display: block !important;
             }
 
@@ -86,19 +93,36 @@
               color: black;
               display: block !important;
             }
-
-            #print-report {
-              color: black;
-              width: 100%;
-
+            .print-report {
               display: block !important;
+              padding: 0.5cm;
+            }
+            .print-report * {
+              display: block !important;
+              color: black !important; /* Ensure all text inside is black */
+              font-size: 11px;
             }
 
-            #print-report > * {
-              color: black;
-              display: block !important;
+            /* Specific table display properties that need to be in @media print */
+            #baptismReport {
+              display: table !important;
+            
+              border-collapse: collapse !important;
             }
-
+            #baptismReport thead,
+            #baptismReport tbody {
+              display: table-row-group !important;
+            }
+            #baptismReport tr {
+              display: table-row !important;
+            }
+            #baptismReport th,
+            #baptismReport td {
+              display: table-cell !important;
+              border: 1px solid black !important; /* Keep borders for report clarity */
+              word-wrap: break-word !important;
+              word-break: break-all !important;
+            }
             /* Hide print button */
             #printButton {
               display: none;
@@ -107,10 +131,11 @@
             /* Additional Print Styles */
             #baptismCertificate {
               width: 100%;
-              padding: 20px;
+              padding-top: 30%;
+              padding-right: 3cm;
+              padding-left: 3cm;
               font-family: serif;
               color: black;
-              border: 2px solid black;
               background: white;
             }
 
@@ -189,9 +214,7 @@
 
         <!-- Baptism Certificate (Hidden by Default) -->
         <div class="baptismCertificate">
-          <h2 style="text-align: center">Surat Permandian</h2>
-          <h2 style="text-align: center">(Extractum e Registro Baptismali)</h2>
-          <div class="grid">
+          <div class="grid" style="">
             <p><strong>Buku:</strong> <span id="printNomorBuku">___</span></p>
             <p><strong>Hal:</strong> <span id="printNomorHal">___</span></p>
             <p>
@@ -296,7 +319,7 @@
                   <th>Nama Ayah</th>
                   <th>Nama Ibu</th>
                   <th>Terdaftar Di Biduk</th>
-                  <th>Status</th>
+                  <!-- <th>Status</th> -->
                 </tr>
               </thead>
               <tbody id="baptismTableBody">
@@ -559,15 +582,20 @@
               </div>
 
               <label>KTP / KK</label>
-              <input style="color: black;" type="file" accept="image/*" name="file_kk_ktp" />
-              <div class="suratPengantar" style="display: none">
+              <input
+                style="color: black"
+                type="file"
+                accept="image/*"
+                name="file_kk_ktp"
+              />
+              <!-- <div class="suratPengantar" style="display: none">
                 <label>Surat Pengantar</label>
                 <input
                   type="file"
                   accept="image/*"
                   name="file_surat_pengantar"
                 />
-              </div>
+              </div> -->
 
               <div id="messageBox" class="message-box"></div>
               <input type="submit" name="save" value="SUBMIT" class="btn" />
@@ -599,7 +627,7 @@
                   <th>Alamat Lengkap</th>
                   <th>No HP/Telp</th>
                   <th>File KK / KTP</th>
-                  <th>File Surat Pengantar</th>
+                  <th>Surat Pengantar</th>
 
                   <th class="action_column">Aksi</th>
                 </tr>
@@ -812,7 +840,7 @@
                   required
                   accept="image/*"
                   name="kartu_katekumen"
-                  style="color: black;"
+                  style="color: black"
                 />
               </div>
 
@@ -822,17 +850,22 @@
               </div>
 
               <label>KTP / KK</label>
-              <input type="file" required accept="image/*" name="file_kk_ktp" 
-                  style="color: black;"/>
-              <div class="suratPengantar" style="display: none">
+              <input
+                type="file"
+                required
+                accept="image/*"
+                name="file_kk_ktp"
+                style="color: black"
+              />
+              <!-- <div class="suratPengantar" style="display: none">
                 <label>Surat Pengantar</label>
                 <input
                   type="file"
                   accept="image/*"
                   name="file_surat_pengantar"
-                  style="color: black;"
+                  style="color: black"
                 />
-              </div>
+              </div> -->
 
               <div id="messageBox" class="message-box"></div>
 
@@ -978,7 +1011,7 @@
                   <th>Kartu Katekumen</th>
                   <th>Jumlah Katekumen</th>
                   <th>File KK / KTP</th>
-                  <th>File Surat Pengantar</th>
+                  <th>Surat Pengantar</th>
                   <th>Status</th>
                   <th class="action_column">Aksi</th>
                 </tr>
@@ -1726,7 +1759,7 @@
 
               <div class="input-box">
                 <label>No HP/Telp:</label>
-                <input type="text" id="editHp" name="no_telp" required /><br />
+                <input type="text" id="editHp" name="no_telp"  /><br />
               </div>
 
               <div id="messageBox" class="message-box"></div>
