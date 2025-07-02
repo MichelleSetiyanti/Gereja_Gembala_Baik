@@ -39,6 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileSuratPengantarFilePath = uploadFile('file_surat_pengantar', '../../uploads/');
     $kartu_katekumen = uploadFile('kartu_katekumen', '../../uploads/');
 
+
+    if ($jumlah_katekumen < 60) {
+        echo json_encode(["success" => false, "message" => "Jumlah katekumen kurang dari 60!"]);
+        exit;
+    }
+
     $sql = "INSERT INTO sakramen 
             (id_admin, nik, nama_diri, nama_ayah, nama_ibu, nama_suami_istri, tempat_pernikahan, tanggal_pernikahan, saksi_permandian, lm_paroki, alamat, no_hp,kartu_katekumen,jumlah_katekumen,file_kk_ktp, file_surat_pengantar,type) 
             VALUES 
