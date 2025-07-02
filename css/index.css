@@ -1,169 +1,169 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	color: white;
-	background-color: white !important;
-	font-family: "Rubik", sans-serif;
+  color: white;
+  background-color: white !important;
+  font-family: "Rubik", sans-serif;
 }
 
 .header {
-	position: relative;
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .background-image {
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .overlay {
-	position: absolute;
-	inset: 0;
-	background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Navbar */
 .navbar {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 20px;
-	background: transparent;
-	transition: background 0.3s ease-in-out;
-	z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: transparent;
+  transition: background 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .navbar.scrolled {
-	background: rgba(81, 67, 57, 0.7);
+  background: rgba(81, 67, 57, 0.7);
 }
 
 .logo-container {
-	padding-left: 30px;
+  padding-left: 30px;
 }
 
 .logo-container .logo {
-	height: 40px;
+  height: 40px;
 }
 
 .nav-links {
-	display: flex;
-	gap: 30px;
-	padding-right: 30px;
-	font-size: 10px;
-	font-weight: bold;
+  display: flex;
+  gap: 30px;
+  padding-right: 30px;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .nav-links a {
-	color: white;
-	text-decoration: none;
-	transition: color 0.3s;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
-	color: #ccc;
+  color: #ccc;
 }
 
 /* Mobile Navbar */
 .menu-toggle {
-	display: none;
-	font-size: 24px;
-	cursor: pointer;
-	color: white;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
 @media (max-width: 768px) {
-	.menu-toggle {
-		display: block;
-	}
+  .menu-toggle {
+    display: block;
+  }
 
-	.nav-links {
-		display: none;
-		flex-direction: column;
-		position: absolute;
-		top: 60px;
-		left: 0;
-		width: 100%;
-		background: rgba(0, 0, 0, 0.9);
-		text-align: center;
-		padding: 10px 0;
-	}
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 10px 0;
+  }
 
-	.nav-links.active {
-		display: flex;
-	}
+  .nav-links.active {
+    display: flex;
+  }
 }
 
 /* Content */
 .content {
-	position: relative;
-	z-index: 10;
-	max-width: 90%;
-	text-align: left;
-	padding: 20px;
+  position: relative;
+  z-index: 10;
+  max-width: 90%;
+  text-align: left;
+  padding: 20px;
 }
 
 .content h2 {
-	font-style: italic;
-	font-family: "Crimson Text", serif;
-	font-weight: 400;
-	font-size: 1.5rem;
+  font-style: italic;
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .content h1 {
-	font-size: 3rem;
-	font-weight: 700;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .content p {
-	margin-top: 15px;
-	line-height: 1.6;
-	font-size: 10px;
+  margin-top: 15px;
+  line-height: 1.6;
+  font-size: 10px;
 }
 
 @media (min-width: 768px) {
-	.content {
-		max-width: 80%;
-		padding-left: 40px;
-	}
+  .content {
+    max-width: 80%;
+    padding-left: 40px;
+  }
 
-	.content h1 {
-		font-size: 3.5rem;
-	}
+  .content h1 {
+    font-size: 3.5rem;
+  }
 
-	.content p {
-		font-size: 1.3rem;
-	}
+  .content p {
+    font-size: 1.3rem;
+  }
 }
 
 @media (min-width: 1024px) {
-	.content {
-		max-width: 700px;
-		padding-left: 80px;
-	}
+  .content {
+    max-width: 700px;
+    padding-left: 80px;
+  }
 
-	.content h1 {
-		font-size: 4rem;
-	}
+  .content h1 {
+    font-size: 4rem;
+  }
 
-	.content p {
-		font-size: 1.4rem;
-	}
+  .content p {
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -179,485 +179,614 @@ body {
 
 /* Pagination */
 .pagination {
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	transform: translateY(-50%);
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .pagination a {
-	color: white;
-	text-decoration: none;
-	font-size: 10px;
-	font-family: "Lato", sans-serif;
-	transition: color 0.3s, font-size 0.3s;
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  font-family: "Lato", sans-serif;
+  transition: color 0.3s, font-size 0.3s;
 }
 
 .pagination a.active {
-	color: #796754;
-	font-size: 16px;
-	font-weight: bold;
+  color: #796754;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* SECTION */
 
 .section {
-	background-color: white !important;
-	width: 100%;
-	padding: 40px 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background-color: white !important;
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section .border-left {
-	border-left: 4px solid #d32f2f;
-	padding-left: 16px;
+  border-left: 4px solid #d32f2f;
+  padding-left: 16px;
 }
 
 .section .text {
-	color: #444444;
-	font-size: 1.125rem;
-	line-height: 1.6;
-	max-width: 600px;
+  color: #444444;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 /* ABOUT US */
 
 .about-section {
-	display: flex;
-	align-items: center;
-	/* justify-content: space-between; */
-	gap: 2rem;
-	background-color: #796754 !important;
-	width: 100%;
-	padding-left: 0;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 2rem;
+  background-color: #796754 !important;
+  width: 100%;
+  padding-left: 0;
 }
 
 /* Gambar */
 .about-image {
-	flex: 1;
-	max-width: 45%;
+  flex: 1;
+  max-width: 45%;
 }
 
 .about-image img {
-	width: 100%;
-	height: auto;
-	display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Teks */
 .about-content {
-	flex: 1;
-	max-width: 50%;
-	text-align: left;
-	padding: 3rem 4rem;
+  flex: 1;
+  max-width: 50%;
+  text-align: left;
+  padding: 3rem 4rem;
 }
 
 /* Style Text */
 .about-content h1 {
-	font-size: 2.25rem;
-	font-weight: bold;
-	color: white;
-	margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
 }
 
 .about-content p {
-	color: white;
-	margin-bottom: 1rem;
-	line-height: 1.6;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 /* Tombol */
 
 .buttons {
-	margin-top: 2rem;
-	display: flex;
-	gap: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .buttons .read-more {
-	padding: 0.75rem 1.5rem;
-	background-color: transparent;
-	color: white;
-	border: 2px solid white;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .buttons .read-more:hover {
-	background-color: white;
-	color: #796754;
+  background-color: white;
+  color: #796754;
 }
 
 /* LOCATION */
 .location-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	background-color: white;
-	padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  padding: 3rem 2rem;
 }
 
 .message-box {
-	margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 @media (min-width: 768px) {
-	.location-section {
-		flex-direction: row;
-		text-align: left;
-		justify-content: center;
-		gap: 2rem;
-	}
+  .location-section {
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 .location-content {
-	max-width: 40%;
+  max-width: 40%;
 }
 
 .location-content h1 {
-	font-family: "Crimson Text", serif;
-	font-size: 2rem;
-	margin-bottom: 1rem;
-	color: #444444;
+  font-family: "Crimson Text", serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #444444;
 }
 
 .location-content .visit-us {
-	color: #796754;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
+  color: #796754;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .location-content .address,
 .location-content .hours {
-	font-size: 1rem;
-	color: #444444;
+  font-size: 1rem;
+  color: #444444;
 }
 
 .location-content .questions {
-	color: #3a2d28;
-	font-weight: bold;
-	margin: 1rem 0;
+  color: #3a2d28;
+  font-weight: bold;
+  margin: 1rem 0;
 }
 
 .location-content .questions span {
-	color: #796754;
+  color: #796754;
 }
 
 .social-icons {
-	display: flex;
-	gap: 1rem;
-	margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .social-icons a {
-	font-size: 1.5rem;
-	color: #2d3748;
-	transition: color 0.3s ease;
+  font-size: 1.5rem;
+  color: #2d3748;
+  transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-	color: #e53e3e;
+  color: #e53e3e;
 }
 
 .map-section {
-	width: 40%;
-	display: flex;
-	justify-content: center;
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 
 .map-section iframe {
-	width: 100%;
-	height: 250px;
-	display: block;
-	border-radius: 0 !important;
+  width: 100%;
+  height: 250px;
+  display: block;
+  border-radius: 0 !important;
 }
 
 /* JADWAL MISA */
 .schedule-section {
-	background-color: #f9f9f9;
-	padding: 3rem 1rem;
-	text-align: center;
+  background-color: #f9f9f9;
+  padding: 3rem 1rem;
+  text-align: center;
 }
 
 .container {
-	max-width: 900px;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-title {
-	font-size: 2rem;
-	margin-bottom: 1.5rem;
-	color: #333;
-	font-weight: bold;
-	text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Table Styling */
 .table-container {
-	overflow-x: auto;
-	border-radius: 12px;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Ensures horizontal scrolling if content overflows */
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .schedule-table {
-	width: 100%;
-	border-collapse: collapse;
-	background: white;
-	border-radius: 12px;
-	overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures rounded corners apply to content */
 }
 
 .schedule-table th,
 .schedule-table td {
-	padding: 16px;
-	text-align: left;
+  padding: 16px;
+  text-align: left;
 }
 
 .schedule-table th {
-	background-color: #796754;
-	color: white;
-	text-transform: uppercase;
-	font-weight: bold;
+  background-color: #796754;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  white-space: nowrap; /* Prevents text wrapping in headers */
 }
 
 .schedule-table tr {
-	border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .schedule-table tr:last-child {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .schedule-table td {
-	font-size: 1rem;
-	color: #444;
+  font-size: 1rem;
+  color: #444;
 }
 
 .schedule-table .time {
-	font-weight: bold;
-	color: #796754;
-	margin-top: 4px;
+  font-weight: bold;
+  color: #796754;
+  margin-top: 4px;
+  display: block; /* Ensures time is on a new line within a cell */
 }
 
 /* Hover effect */
 .schedule-table tr:hover {
-	background-color: #79675428;
+  background-color: #79675428;
 }
-
 /* Responsive */
 @media (max-width: 768px) {
-	.schedule-table th,
-	.schedule-table td {
-		padding: 12px;
-	}
+  .about-section {
+    padding: 2rem 1rem; /* Further adjust padding for smaller screens */
+  }
+
+  .about-image {
+    max-width: 85%; /* Even more width for the image */
+  }
+
+  .about-content {
+    max-width: 100%; /* Content takes full width */
+    padding: 1.5rem 1rem; /* Adjust padding */
+  }
+
+  .about-content h1 {
+    font-size: 1.75rem; /* Further adjust font size */
+  }
+
+  .about-content p {
+    font-size: 0.9rem; /* Further adjust font size */
+  }
+
+  .buttons {
+    flex-direction: column; /* Stack buttons if there were multiple */
+    align-items: center; /* Center stacked buttons */
+    gap: 0.8rem;
+  }
+
+  .buttons .read-more {
+    width: 80%; /* Make button take more width */
+    max-width: 250px; /* Limit button max width */
+  }
+  .schedule-table th,
+  .schedule-table td {
+    padding: 12px;
+  }
 }
 
 .footer {
-	background-color: #39332b;
-	color: #fff;
-	padding: 40px 0;
-	font-family: "Lato", sans-serif;
-	text-align: center;
+  background-color: #39332b;
+  color: #fff;
+  padding: 40px 0;
+  font-family: "Lato", sans-serif;
+  text-align: center;
 }
 
 .footer-content {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .footer-logo img {
-	width: 120px;
-	height: auto;
+  width: 120px;
+  height: auto;
 }
 
 .footer-text p {
-	margin: 0;
-	font-size: 18px;
-	font-weight: 400;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .footer-bottom p {
-	font-size: 14px;
-	font-weight: 300;
-	margin-top: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 20px;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* Form Styling */
 /* Global Form Styling */
 
 .form-section {
-	display: flex;
-	justify-content: space-around;
-	padding-left: 10px;
-	padding-right: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .card {
-	width: 16rem;
-	height: 20rem;
-	padding: 5rem;
-	border-radius: 0.5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	color: white;
-	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-	overflow: hidden;
+  width: 16rem;
+  height: 20rem;
+  padding: 5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Tambahkan overlay untuk memperjelas teks */
 .card::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.4);
-	z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 }
 
 .card h2,
 .card button {
-	position: relative;
-	z-index: 10;
+  position: relative;
+  z-index: 10;
 }
 
 /* Background khusus untuk setiap card */
 .card:nth-child(1) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 .card:nth-child(2) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 .card:nth-child(3) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 .card:nth-child(4) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 .card:nth-child(5) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 .card:nth-child(6) {
-	background-image: url("../assets/bg_1.jpg");
+  background-image: url("../assets/bg_1.jpg");
 }
 
 /* Button styling */
 .card button {
-	background-color: #a68b5b;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #a68b5b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnBayi {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnKateAnak {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnKateDewasa {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnAnak {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 button.BtnDewasa {
-	background-color: #d6831d85;
-	color: white;
-	padding: 0.5rem 1rem;
-	border: none;
-	cursor: pointer;
-	font-size: 10px;
-	font-weight: bold;
+  background-color: #d6831d85;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .action_column {
-	display: none;
+  display: none;
 }
 
 /* Responsive Styling */
-@media (max-width: 768px) {
-	form {
-		padding: 20px;
-	}
+@media (max-width: 600px) {
+  .location-section {
+    flex-direction: row; /* Ubah ke layout baris pada layar yang lebih besar */
+    justify-content: center; /* Pusatkan konten secara horizontal */
+    align-items: flex-start; /* Sejajarkan item di bagian atas */
+    padding: 50px; /* Tingkatkan padding */
+  }
 
-	form h1 {
-		font-size: 1.6rem;
-		margin-bottom: 18px;
-	}
+  .location-content {
+    text-align: left; /* Teks akan rata kiri pada layar besar */
+    padding-right: 30px; /* Beri jarak antara konten dan peta */
+  }
 
-	.form-row {
-		grid-template-columns: 1fr; /* 1 column for small screens */
-	}
+  .map-section {
+    width: 50%; /* Peta akan mengambil sekitar 50% lebar */
+    max-width: none; /* Hapus batasan max-width pada peta */
+  }
 
-	.input-box input,
-	.input-box textarea {
-		padding: 10px;
-		font-size: 0.95rem;
-	}
+  .map-section iframe {
+    height: 400px; /* Tingkatkan tinggi peta untuk desktop */
+  }
 
-	button.btn {
-		font-size: 1rem;
-		padding: 8px;
-	}
+  h1 {
+    font-size: 2.5em; /* Ukuran judul lebih besar untuk desktop */
+  }
+  form {
+    padding: 20px;
+  }
+
+  form h1 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr; /* 1 column for small screens */
+  }
+
+  .input-box input,
+  .input-box textarea {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  button.btn {
+    font-size: 1rem;
+    padding: 8px;
+  }
+  .about-section {
+    padding: 1.5rem 0.5rem;
+  }
+  .about-image {
+    max-width: 100%; /* Image takes full width */
+  }
+  .about-content {
+    padding: 1rem 0.5rem;
+  }
+  .about-content h1 {
+    font-size: 1.5rem;
+  }
+  .about-content p {
+    font-size: 0.85rem;
+  }
+  .buttons .read-more {
+    width: 90%; /* Button takes even more width */
+  }
+  .schedule-table thead {
+    display: none; /* Hide table headers on small screens */
+  }
+
+  .schedule-table,
+  .schedule-table tbody,
+  .schedule-table tr,
+  .schedule-table td {
+    display: block; /* Make table elements behave like block elements */
+    width: 100%; /* Full width for each simulated row/cell */
+  }
+
+  .schedule-table tr {
+    margin-bottom: 15px; /* Space between simulated rows */
+    border: 1px solid #ddd; /* Add a border to each simulated row */
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .schedule-table td {
+    text-align: right; /* Align text to the right for values */
+    padding-left: 50%; /* Make space for pseudo-element labels */
+    position: relative;
+    border: none; /* Remove individual cell borders */
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .schedule-table td::before {
+    content: attr(data-label); /* Use data-label for the label */
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px); /* Adjust width for label */
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left; /* Align label text to the left */
+    font-weight: bold;
+    color: #796754;
+  }
+
+  /* Specific labels for each column */
+  .schedule-table td:nth-of-type(1)::before {
+    content: "Ibadah";
+  }
+  .schedule-table td:nth-of-type(2)::before {
+    content: "Bahasa";
+  }
+  .schedule-table td:nth-of-type(3)::before {
+    content: "Waktu & Hari";
+  }
+
+  .schedule-table .time {
+    display: inline; /* Keep time inline with its label if needed */
+    margin-top: 0;
+  }
 }
