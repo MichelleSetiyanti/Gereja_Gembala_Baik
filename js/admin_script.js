@@ -813,3 +813,18 @@ function handleSakramenDewasaNIKSearch(event) {
     $("#createSakramenDewasaNamaSuamiIstri").val(foundData.nama_suami_istri);
   }, 500);
 }
+
+function validateSakramenDewasaForm() {
+    const jumlahKatekumenInput = document.getElementById('jumlahKatekumen');
+    const jumlahKatekumen = parseInt(jumlahKatekumenInput.value, 10);
+    const messageBox = document.getElementById('messageBox');
+
+    if (isNaN(jumlahKatekumen) || jumlahKatekumen < 60) {
+      messageBox.textContent = 'Jumlah Katekumen tidak boleh kurang dari 60.';
+      messageBox.style.color = 'red';
+      return false; 
+    } else {
+      messageBox.textContent = ''; 
+      messageBox.style.color = '';
+      return true;     }
+  }

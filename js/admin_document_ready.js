@@ -269,7 +269,7 @@ $(document).ready(function () {
     editDataDewasa,
     deleteTable,
     undefined,
-    "sakramen_dewasa",
+    "sakramen",
     undefined,
     undefined,
     approveSakramenDewasa
