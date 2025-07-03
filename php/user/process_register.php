@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 $server_name = "localhost";
 $username = "root";
-$password = "";
+$password = "gapura";
 $database_name = "gereja_gembala_baik";
 
 $con = mysqli_connect($server_name, $username, $password, $database_name);
@@ -26,20 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(["success" => false, "message" => "Password Tidak Sesuai"]);
     } else
 
-    if (mysqli_num_rows($check_result) > 0) {
-        echo json_encode(["success" => false, "message" => "Username sudah terdaftar!"]);
-    } else {
-
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO user_login (username, password) VALUES ('$username', '$hashed_password')";
-
-        if (mysqli_query($con, $sql)) {
-            echo json_encode(["success" => true, "message" => "Akun berhasil didaftarkan!"]);
+        if (mysqli_num_rows($check_result) > 0) {
+            echo json_encode(["success" => false, "message" => "Username sudah terdaftar!"]);
         } else {
-            echo json_encode(["success" => false, "message" => "Error: " . mysqli_error($con)]);
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO user_login (username, password) VALUES ('$username', '$hashed_password')";
+
+            if (mysqli_query($con, $sql)) {
+                echo json_encode(["success" => true, "message" => "Akun berhasil didaftarkan!"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Error: " . mysqli_error($con)]);
+            }
         }
-    }
 
     mysqli_close($con);
 }

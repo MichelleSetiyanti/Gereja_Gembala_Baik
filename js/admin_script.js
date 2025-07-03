@@ -288,13 +288,17 @@ function editDataBiduk(e) {
 
   let id = button.data("id");
   let nik = button.data("nik");
-  let nama_keluarga = button.data("nama_keluarga");
   let alamat = button.data("alamat");
+  let nama_ayah = button.data("nama_ayah");
+  let nama_ibu = button.data("nama_ibu");
+  let lm_paroki = button.data("lm_paroki");
 
   $("#editIdBiduk").val(id);
   $("#editNIKBiduk").val(nik);
-  $("#editNamaKeluargaBiduk").val(nama_keluarga);
   $("#editAlamatBiduk").val(alamat);
+  $("#editAyahBiduk").val(nama_ayah);
+  $("#editIbuBiduk").val(nama_ibu);
+  $("#editLmParoki").val(lm_paroki);
 
   $("#editDatabaseBiduk").css("display", "flex");
 }
@@ -402,10 +406,21 @@ function verifikasiNik(e, target) {
     $(".suratPengantar input").prop("required", false);
     $("#nikVerificationPopUp .modal-content h3").text("NIK Ditemukan");
     $("#informationBiduk").css("display", "block");
-    $("#verifNamaAyah").text(foundData.nama_keluarga);
+    $("#verifNamaAyah").text(foundData.nama_ayah);
+    $("#verifNamaIbu").text(foundData.nama_ibu);
+    $("#verifLmParoki").text(foundData.lm_paroki);
     $("#verifAlamat").text(foundData.alamat);
 
+    $("#createSakramenDewasaNamaAyah").val(foundData.nama_ayah);
+    $("#createSakramenDewasaNamaIbu").val(foundData.nama_ibu);
+    $("#createSakramenDewasaAlamat").val(foundData.alamat);
     $("#createBaptisAlamat").val(foundData.alamat);
+    $("#createSakramenDewasaLMParoki").val(foundData.lm_paroki);
+
+    $("#createSakramenBayiNamaAyah").val(foundData.nama_ayah);
+    $("#createSakramenBayiNamaIbu").val(foundData.nama_ibu);
+    $("#createSakramenBayiAlamat").val(foundData.alamat);
+    $("#createSakramenBayiLMParoki").val(foundData.lm_paroki);
   } else {
     $(".suratPengantar").css("display", "block");
     $(".suratPengantar input").prop("required", true);

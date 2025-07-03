@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 $server_name = "localhost";
 $username = "root";
-$password = "";
+$password = "gapura";
 $database_name = "gereja_gembala_baik";
 
 
@@ -20,10 +20,10 @@ if (!$conn) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $nik  = mysqli_real_escape_string($conn, $_POST['nik']);
+    $nik = mysqli_real_escape_string($conn, $_POST['nik']);
     $nama_diri = mysqli_real_escape_string($conn, $_POST['nama_diri']);
     $nama_ayah = mysqli_real_escape_string($conn, $_POST['nama_ayah']);
-    $nama_ibu  = mysqli_real_escape_string($conn, $_POST['nama_ibu']);
+    $nama_ibu = mysqli_real_escape_string($conn, $_POST['nama_ibu']);
     $nama_suami_istri = mysqli_real_escape_string($conn, $_POST['nama_suami_istri']);
     $tempat_pernikahan = mysqli_real_escape_string($conn, $_POST['tempat_pernikahan']);
     $tanggal_pernikahan = mysqli_real_escape_string($conn, $_POST['tanggal_pernikahan']);

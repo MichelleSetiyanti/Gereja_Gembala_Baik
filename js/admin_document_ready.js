@@ -433,7 +433,7 @@ $(document).ready(function () {
   fetchData(
     "./php/biduk/tableDataBiduk.php",
     "#table-body-biduk",
-    ["id", "id_admin", "nik", "nama_keluarga", "alamat"],
+    ["id", "id_admin", "nik", "nama_ayah", "nama_ibu", "lm_paroki", "alamat"],
     editDataBiduk,
     deleteTable,
     undefined,

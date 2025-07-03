@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 $server_name = "localhost";  // Sesuaikan dengan konfigurasi server Anda
 $username = "root";          // Sesuaikan
-$password = "";              // Sesuaikan
+$password = "gapura";              // Sesuaikan
 $database_name = "gereja_gembala_baik"; // Sesuaikan
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);

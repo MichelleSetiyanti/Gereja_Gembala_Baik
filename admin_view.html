@@ -106,7 +106,7 @@
             /* Specific table display properties that need to be in @media print */
             #baptismReport {
               display: table !important;
-            
+
               border-collapse: collapse !important;
             }
             #baptismReport thead,
@@ -499,10 +499,32 @@
               class="form-container"
             >
               <!-- Row 1 -->
-              <div class="input-row">
+              <!-- <div class="input-row">
                 <div class="input-box">
                   <label>NIK Keluarga</label>
                   <input type="text" name="nik" id="sakramenBayiNik" required />
+                  <button
+                    class="btn"
+                    onclick="verifikasiNik(event,'sakramenBayiNik')"
+                  >
+                    Verifikasi NIK
+                  </button>
+                </div>
+              </div> -->
+              <div class="input-row">
+                <div class="input-box">
+                  <label>NIK</label>
+                  <input
+                    onchange="handleSakramenDewasaNIKSearch(event)"
+                    type="text"
+                    name="nik"
+                    id="sakramenBayiNik"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <label>NIK Keluarga</label>
+                  <input type="text" id="sakramenBayiNik" required />
                   <button
                     class="btn"
                     onclick="verifikasiNik(event,'sakramenBayiNik')"
@@ -536,11 +558,21 @@
                 </div>
                 <div class="input-box">
                   <label>Nama Ayah</label>
-                  <input type="text" name="nama_ayah" required />
+                  <input
+                    type="text"
+                    name="nama_ayah"
+                    id="createSakramenBayiNamaAyah"
+                    required
+                  />
                 </div>
                 <div class="input-box">
                   <label>Nama Ibu</label>
-                  <input type="text" name="nama_ibu" required />
+                  <input
+                    type="text"
+                    name="nama_ibu"
+                    id="createSakramenBayiNamaIbu"
+                    required
+                  />
                 </div>
               </div>
 
@@ -554,9 +586,14 @@
                   <label>Tanggal Pernikahan</label>
                   <input type="date" name="tanggal_pernikahan" />
                 </div>
+
                 <div class="input-box">
                   <label>LM Paroki</label>
-                  <input type="text" name="lm_paroki" />
+                  <input
+                    type="text"
+                    name="lm_paroki"
+                    id="createSakramenBayiLMParoki"
+                  />
                 </div>
               </div>
 
@@ -573,7 +610,12 @@
 
               <div class="input-box">
                 <label>Alamat Lengkap</label>
-                <input type="text" name="alamat" required />
+                <input
+                  type="text"
+                  name="alamat"
+                  id="createSakramenBayiAlamat"
+                  required
+                />
               </div>
 
               <div class="input-box">
@@ -894,11 +936,22 @@
 
               <div class="input-row">
                 <div class="input-box">
-                  <label>Nama Keluarga:</label>
-                  <input type="text" name="nama_keluarga" required />
+                  <label>Nama Ayah:</label>
+                  <input type="text" name="nama_ayah" />
                 </div>
               </div>
-
+              <div class="input-row">
+                <div class="input-box">
+                  <label>Nama Ibu:</label>
+                  <input type="text" name="nama_ibu" />
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="input-box">
+                  <label>LM Paroki:</label>
+                  <input type="text" name="lm_paroki" />
+                </div>
+              </div>
               <div class="input-box">
                 <label>Alamat:</label>
                 <input type="text" name="alamat" required />
@@ -1031,7 +1084,9 @@
                   <th>No</th>
                   <th>Id Admin</th>
                   <th>NIK Keluarga</th>
-                  <th>Nama</th>
+                  <th>Nama Ayah</th>
+                  <th>Nama Ibu</th>
+                  <th>LM Paroki</th>
                   <th>Alamat</th>
                   <th class="action_column">Aksi</th>
                 </tr>
@@ -1759,7 +1814,7 @@
 
               <div class="input-box">
                 <label>No HP/Telp:</label>
-                <input type="text" id="editHp" name="no_telp"  /><br />
+                <input type="text" id="editHp" name="no_telp" /><br />
               </div>
 
               <div id="messageBox" class="message-box"></div>
@@ -1791,13 +1846,21 @@
 
               <div class="input-row">
                 <div class="input-box">
-                  <label>Nama Keluarga:</label>
-                  <input
-                    type="text"
-                    id="editNamaKeluargaBiduk"
-                    name="nama_keluarga"
-                    required
-                  />
+                  <label>Nama Ayah:</label>
+                  <input type="text" id="editAyahBiduk" name="nama_ayah" />
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="input-box">
+                  <label>Nama Ibu:</label>
+                  <input type="text" id="editIbuBiduk" name="nama_ibu" />
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div class="input-box">
+                  <label>LM Paroki:</label>
+                  <input type="text" id="editLmParoki" name="lm_paroki" />
                 </div>
               </div>
 
@@ -2482,7 +2545,9 @@
           >
             <h3></h3>
             <div id="informationBiduk" style="display: none">
-              <h4>Nama Keluarga : <span id="verifNamaAyah"></span></h4>
+              <h4>Nama Ayah : <span id="verifNamaAyah"></span></h4>
+              <h4>Nama Ibu : <span id="verifNamaIbu"></span></h4>
+              <h4>LM Paroki : <span id="verifLmParoki"></span></h4>
               <h4>Alamat: <span id="verifAlamat"></span></h4>
             </div>
           </div>

@@ -6,7 +6,7 @@ header("Content-Type: application/json");
 // Konfigurasi database
 $server_name = "localhost";
 $username = "root";
-$password = "";
+$password = "gapura";
 $database_name = "gereja_gembala_baik";
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
@@ -20,14 +20,14 @@ if (!$conn) {
 // Cek metode request
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ambil data dari request
-    $id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
     // id_admin buat akun admin yg mana yang login dan ngubah data
     // $id_admin = isset($_POST['id_admin']) ? (int)$_POST['id_admin'] : null;
 
-    $nik  = mysqli_real_escape_string($conn, $_POST['nik']);
+    $nik = mysqli_real_escape_string($conn, $_POST['nik']);
     $nama_lengkap = mysqli_real_escape_string($conn, $_POST['nama_lengkap']);
     $nama_ayah = mysqli_real_escape_string($conn, $_POST['nama_ayah']);
-    $nama_ibu  = mysqli_real_escape_string($conn, $_POST['nama_ibu']);
+    $nama_ibu = mysqli_real_escape_string($conn, $_POST['nama_ibu']);
     $sd_kelas = mysqli_real_escape_string($conn, $_POST['sd_kelas']);
     $nama_sekolah = mysqli_real_escape_string($conn, $_POST['nama_sekolah']);
     $tanggal_katekumen = mysqli_real_escape_string($conn, $_POST['tanggal_katekumen']);

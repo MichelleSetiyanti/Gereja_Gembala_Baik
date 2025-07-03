@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 // Konfigurasi database
 $server_name = "localhost";
 $username = "root";
-$password = "";
+$password = "gapura";
 $database_name = "gereja_gembala_baik";
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
@@ -18,7 +18,7 @@ if (!$conn) {
 // Cek metode request
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ambil data dari request
-    $id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
     // id_admin buat akun admin yg mana yang login dan ngubah data
     // $id_admin = isset($_POST['id_admin']) ? (int)$_POST['id_admin'] : null;
     $nik = $_POST['nik'] ?? null;
@@ -36,8 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jumlah_katekumen = $_POST['jumlah_katekumen'] ?? null;
     $alamat = $_POST['alamat'] ?? null;
     $no_hp = $_POST['no_hp'] ?? null;
+    if ($jumlah_katekumen < 60) {
+        echo json_encode(["success" => false, "message" => "Jumlah katekumen kurang dari 60!"]);
+        exit;
+    }
 
     error_log(print_r($_POST, true)); // Log semua data yang diterima
+
 
     // Query untuk update data (gunakan Prepared Statement)
     $sql = "UPDATE sakramen 

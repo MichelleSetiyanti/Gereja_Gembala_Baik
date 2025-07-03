@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 // Konfigurasi database
 $server_name = "localhost";
 $username = "root";
-$password = "";
+$password = "gapura";
 $database_name = "gereja_gembala_baik";
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
@@ -18,15 +18,15 @@ if (!$conn) {
 // Cek metode request
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ambil data dari request
-    $id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
     // id_admin buat akun admin yg mana yang login dan ngubah data
     // $id_admin = isset($_POST['id_admin']) ? (int)$_POST['id_admin'] : null;
-    $no_buku  = mysqli_real_escape_string($conn, $_POST['no_buku']);
-    $no_hal  = mysqli_real_escape_string($conn, $_POST['no_hal']);
+    $no_buku = mysqli_real_escape_string($conn, $_POST['no_buku']);
+    $no_hal = mysqli_real_escape_string($conn, $_POST['no_hal']);
     $no_baptis = mysqli_real_escape_string($conn, $_POST['no_baptis']);
     $nik = mysqli_real_escape_string($conn, $_POST['nik']);
     $tanggal_lahir = mysqli_real_escape_string($conn, $_POST['tanggal_lahir']);
-    $tempat_lahir  = mysqli_real_escape_string($conn, $_POST['tempat_lahir']);
+    $tempat_lahir = mysqli_real_escape_string($conn, $_POST['tempat_lahir']);
     $tanggal_permandian = mysqli_real_escape_string($conn, $_POST['tanggal_permandian']);
     $tempat_permandian = mysqli_real_escape_string($conn, $_POST['tempat_permandian']);
     $nama_lengkap = mysqli_real_escape_string($conn, $_POST['nama_lengkap']);

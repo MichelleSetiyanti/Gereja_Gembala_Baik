@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 $server_name = "localhost";  // Sesuaikan dengan konfigurasi server Anda
 $username = "root";          // Sesuaikan
-$password = "";              // Sesuaikan
+$password = "gapura";              // Sesuaikan
 $database_name = "gereja_gembala_baik"; // Sesuaikan
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
@@ -17,20 +17,22 @@ if (!$conn) {
 // Cek metode request
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Ambil data dari request
-    $id = isset($_POST['id']) ? (int)$_POST['id'] : null;
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : null;
     // id_admin buat akun admin yg mana yang login dan ngubah data
     // $id_admin = isset($_POST['id_admin']) ? (int)$_POST['id_admin'] : null;
     $nik = $_POST['nik'] ?? null;
-    $nama_keluarga = $_POST['nama_keluarga'] ?? null;
     $alamat = $_POST['alamat'] ?? null;
     $id_admin = $_POST['id_admin'] ?? null;
+    $nama_ayah = $_POST['nama_ayah'] ?? null;
+    $nama_ibu = $_POST['nama_ibu'] ?? null;
+    $lm_paroki = $_POST['lm_paroki'] ?? null;
 
     error_log(print_r($_POST, true)); // Log semua data yang diterima
 
 
     // Query untuk update data (gunakan Prepared Statement)
     $sql = "UPDATE data_biduk 
-            SET nik=?, nama_keluarga=?, alamat=?, id_admin=?
+            SET nik=?, alamat=?, id_admin=?, nama_ayah=?, nama_ibu=?, lm_paroki=?
             WHERE id=?";
 
     $stmt = $conn->prepare($sql);
@@ -42,11 +44,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Bind parameter ke statement
     $stmt->bind_param(
-        "sssii",
+        "ssisssi",
         $nik,
-        $nama_keluarga,
         $alamat,
         $id_admin,
+        $nama_ayah,
+        $nama_ibu,
+        $lm_paroki,
         $id
     );
 
