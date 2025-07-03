@@ -111,6 +111,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     mysqli_stmt_close($stmt_check_nik); // Close statement after check
 
+    // --- NEW VALIDATION: Check for existing no_hal and no_baptis combination ---
+    if ($no_hal !== null && $no_baptis !== null) { // Only check if both are provided
+        $sql_check_hal_baptis = "SELECT id FROM surat_baptis WHERE no_hal = ? AND no_baptis = ?";
+        $stmt_check_hal_baptis = mysqli_prepare($conn, $sql_check_hal_baptis);
+        if (!$stmt_check_hal_baptis) {
+            echo json_encode(["success" => false, "message" => "SQL Error preparing 'no_hal' and 'no_baptis' check: " . mysqli_error($conn)]);
+            exit;
+        }
+        // Bind parameters as integers
+        mysqli_stmt_bind_param($stmt_check_hal_baptis, "ii", $no_hal, $no_baptis);
+        mysqli_stmt_execute($stmt_check_hal_baptis);
+        mysqli_stmt_store_result($stmt_check_hal_baptis);
+
+        if (mysqli_stmt_num_rows($stmt_check_hal_baptis) > 0) {
+            echo json_encode(["success" => false, "message" => "Nomor Hal dan Nomor Baptis ini sudah terdaftar!"]);
+            mysqli_stmt_close($stmt_check_hal_baptis);
+            mysqli_close($conn);
+            exit;
+        }
+        mysqli_stmt_close($stmt_check_hal_baptis);
+    }
+    // --- END NEW VALIDATION ---
+
+
     // Enable detailed MySQLi error reporting (good for debugging, remove in production)
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     error_reporting(E_ALL);
@@ -119,10 +143,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = ""; // Initialize SQL variable
 
     if ($type === 'dewasa') {
-        $sql = "INSERT INTO surat_baptis 
-        (id_admin, no_buku, no_hal, no_baptis, nik, tanggal_lahir, tempat_lahir, tanggal_permandian, tempat_permandian, nama_lengkap, jenis_kelamin, nama_ayah, 
-        nama_ibu, nama_wali_baptis, nama_pembaptis, tanggal_penguatan, tempat_penguatan, nama_pasangan, tanggal_pernikahan, tempat_pernikahan, tanggal_komuni, file_kk_ktp, file_surat_pengantar, nama_baptis, alamat, nama_pastor_paroki, type) 
-        VALUES 
+        $sql = "INSERT INTO surat_baptis
+        (id_admin, no_buku, no_hal, no_baptis, nik, tanggal_lahir, tempat_lahir, tanggal_permandian, tempat_permandian, nama_lengkap, jenis_kelamin, nama_ayah,
+        nama_ibu, nama_wali_baptis, nama_pembaptis, tanggal_penguatan, tempat_penguatan, nama_pasangan, tanggal_pernikahan, tempat_pernikahan, tanggal_komuni, file_kk_ktp, file_surat_pengantar, nama_baptis, alamat, nama_pastor_paroki, type)
+        VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
@@ -177,10 +201,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
     } else { // type === 'bayi'
-        $sql = "INSERT INTO surat_baptis 
-        (id_admin, no_buku, no_hal, no_baptis, nik, tanggal_lahir, tempat_lahir, tanggal_permandian, tempat_permandian, nama_lengkap, jenis_kelamin, nama_ayah, 
-        nama_ibu, nama_wali_baptis, nama_pembaptis, tanggal_penguatan, tempat_penguatan, nama_pasangan, tanggal_pernikahan, tempat_pernikahan, tanggal_komuni, file_kk_ktp, file_surat_pengantar, type, nama_baptis, alamat, nama_pastor_paroki) 
-        VALUES 
+        $sql = "INSERT INTO surat_baptis
+        (id_admin, no_buku, no_hal, no_baptis, nik, tanggal_lahir, tempat_lahir, tanggal_permandian, tempat_permandian, nama_lengkap, jenis_kelamin, nama_ayah,
+        nama_ibu, nama_wali_baptis, nama_pembaptis, tanggal_penguatan, tempat_penguatan, nama_pasangan, tanggal_pernikahan, tempat_pernikahan, tanggal_komuni, file_kk_ktp, file_surat_pengantar, type, nama_baptis, alamat, nama_pastor_paroki)
+        VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);

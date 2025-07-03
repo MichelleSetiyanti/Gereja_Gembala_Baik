@@ -45,6 +45,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     error_log(print_r($_POST, true)); // Log semua data yang diterima
 
+    // --- NEW VALIDATION: Check for existing no_hal and no_baptis combination ---
+    if ($no_hal !== null && $no_baptis !== null) { // Only check if both are provided
+        $sql_check_hal_baptis = "SELECT id FROM surat_baptis WHERE no_hal = ? AND no_baptis = ?";
+        $stmt_check_hal_baptis = mysqli_prepare($conn, $sql_check_hal_baptis);
+        if (!$stmt_check_hal_baptis) {
+            echo json_encode(["success" => false, "message" => "SQL Error preparing 'no_hal' and 'no_baptis' check: " . mysqli_error($conn)]);
+            exit;
+        }
+        // Bind parameters as integers
+        mysqli_stmt_bind_param($stmt_check_hal_baptis, "ii", $no_hal, $no_baptis);
+        mysqli_stmt_execute($stmt_check_hal_baptis);
+        mysqli_stmt_store_result($stmt_check_hal_baptis);
+
+        if (mysqli_stmt_num_rows($stmt_check_hal_baptis) > 0) {
+            echo json_encode(["success" => false, "message" => "Nomor Hal dan Nomor Baptis ini sudah terdaftar!"]);
+            mysqli_stmt_close($stmt_check_hal_baptis);
+            mysqli_close($conn);
+            exit;
+        }
+        mysqli_stmt_close($stmt_check_hal_baptis);
+    }
+    // --- END NEW VALIDATION ---
+
 
     // Query untuk update data (gunakan Prepared Statement)
     $sql = "UPDATE surat_baptis 
