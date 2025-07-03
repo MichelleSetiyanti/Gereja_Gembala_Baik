@@ -267,7 +267,7 @@ $(document).ready(function () {
       "status",
     ],
     editDataDewasa,
-    deleteTable,
+    deleteTableSakramen,
     undefined,
     "sakramen_dewasa",
     undefined,
@@ -425,7 +425,7 @@ $(document).ready(function () {
       "file_surat_pengantar",
     ],
     editDataBayi,
-    deleteTable,
+    deleteTableSakramen,
     undefined,
     "sakramen_bayi"
   );
