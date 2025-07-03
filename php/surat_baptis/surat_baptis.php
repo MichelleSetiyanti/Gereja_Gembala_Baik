@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 // Database connection details
 $server_name = "localhost";
 $username = "root";
-$password = "gapura";
+$password = "";
 $database_name = "gereja_gembala_baik";
 
 // Establish database connection

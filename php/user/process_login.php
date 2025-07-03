@@ -4,7 +4,7 @@ header("Content-Type: application/json");
 
 $server_name = "localhost";
 $username = "root";
-$password = "gapura";
+$password = "";
 $database_name = "gereja_gembala_baik";
 
 

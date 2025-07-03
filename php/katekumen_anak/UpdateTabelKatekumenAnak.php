@@ -6,7 +6,7 @@ header("Content-Type: application/json");
 // Konfigurasi database
 $server_name = "localhost";
 $username = "root";
-$password = "gapura";
+$password = "";
 $database_name = "gereja_gembala_baik";
 
 $conn = mysqli_connect($server_name, $username, $password, $database_name);
